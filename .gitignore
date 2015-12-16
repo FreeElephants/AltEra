@@ -1,0 +1,11 @@
+# IDE
+.settings/
+.project
+.buildpath
+
+# PHPUnit
+phpunit.xml
+tests/_coverage
+
+# composer
+vendor/

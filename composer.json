@@ -1,0 +1,25 @@
+{
+    "name": "samizdam/game-calendar",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^5.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "samizdam",
+            "email": "samizdam@inbox.ru"
+        }
+    ],
+    "require": {},
+    "autoload": {
+    	"psr-4": {
+    		"samizdam\\GameCalendar\\": "src/samizdam/GameCalendar"
+    	}
+    },
+    "autoload-dev": {
+    	"psr-4": {
+    		"samizdam\\GameCalendar\\": "tests/samizdam/GameCalendar"
+    	}	
+    }
+}
