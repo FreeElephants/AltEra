@@ -12,13 +12,22 @@ namespace FreeElephants\AltEra;
 interface CalendarInterface
 {
 
+    const SEC_PER_DAY = 60 * 60 * 24;
+
+    const DEFAULT_SCALE = self::SEC_PER_DAY;
+
     /**
      *
      *
-     * @param \DateTimeInterface $datetime
-     * @return void
+     * @return int
      */
-    public function setInitialDateTime(\DateTimeInterface $datetime);
+    public function getInitialTimestamp();
+
+    /**
+     *
+     * @return number
+     */
+    public function getScale();
 
     /**
      * Get Date object for current timestamp with offset from initial.
@@ -26,7 +35,6 @@ interface CalendarInterface
      * @return int
      */
     public function getCurrentDate();
-
 
     /**
      * Get days from initial.

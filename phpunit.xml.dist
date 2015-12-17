@@ -12,8 +12,8 @@
 	
 	<logging>
 	<!--
-  	-->
   		<log type="coverage-html" target="tests/_coverage" lowUpperBound="35" highLowerBound="70"/>
+  	-->
     </logging>
     
 </phpunit>

@@ -11,11 +11,32 @@ use FreeElephants\AltEra\Exception\ArgumentException;
 class Calendar implements CalendarMutableInterface
 {
 
+    private $initialTimestamp;
+
+    private $scale = self::DEFAULT_SCALE;
+
     private $monthsMap = [];
 
-    public function __construct(\DateTimeInterface $datetime = null)
+
+    /**
+     *
+     *
+     * @param unknown $timestamp
+     * @return return_type
+     */
+    public function __construct($timestamp = null)
     {
-        $this->setInitialDateTime($datetime ?: new \DateTime());
+        $this->setInitialTImestamp($timestamp ?: time());
+    }
+
+    public function setScale($realSecPerAltDay)
+    {
+        $this->scale = $realSecPerAltDay;
+    }
+
+    public function getScale()
+    {
+        return $this->scale;
     }
 
     public function addMonth(MonthInterface $month)
@@ -32,12 +53,17 @@ class Calendar implements CalendarMutableInterface
     /**
      *
      *
-     * @param \DateTimeInterface $datetime
+     * @param int $timestamp
      * @return void
      */
-    public function setInitialDateTime(\DateTimeInterface $datetime)
+    public function setInitialTimestamp($timestamp)
     {
+        $this->initialTimestamp = (int) $timestamp;
+    }
 
+    public function getInitialTimestamp()
+    {
+        return $this->initialTimestamp;
     }
 
     /**
@@ -46,7 +72,7 @@ class Calendar implements CalendarMutableInterface
      * @return int
      */
     public function getCurrentDate(){
-        return new Date();
+        return new Date($this);
     }
 
     /**

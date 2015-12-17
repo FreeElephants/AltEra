@@ -28,7 +28,7 @@ interface DateInterface
     /**
      *
      *
-     * @return int
+     * @return MonthInterface
      */
     public function getMonth();
 
