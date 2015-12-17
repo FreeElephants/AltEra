@@ -30,6 +30,6 @@ interface DateInterface
      *
      * @return int
      */
-    public function getMonths();
+    public function getMonth();
 
 }

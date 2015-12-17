@@ -15,7 +15,7 @@ class Date implements DateInterface
 
     }
 
-    public function getMonths()
+    public function getMonth()
     {
 
     }
