@@ -1,5 +1,5 @@
 <?php
-namespace samizdam\GameCalendar;
+namespace FreeElephants\AltEra;
 
 /**
  *

@@ -1,6 +1,6 @@
 <?php
 
-namespace samizdam\GameCalendar\Exception;
+namespace FreeElephants\AltEra\Exception;
 
 /**
  *

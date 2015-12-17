@@ -1,8 +1,8 @@
 <?php
 
-namespace samizdam\GameCalendar;
+namespace FreeElephants\AltEra;
 
-use samizdam\GameCalendar\Exception\ArgumentException;
+use FreeElephants\AltEra\Exception\ArgumentException;
 /**
  *
  * @author samizdam
@@ -61,7 +61,7 @@ class Calendar implements CalendarMutableInterface
     /**
      *
      * (non-PHPdoc)
-     * @see \samizdam\GameCalendar\CalendarInterface::getElapsedYears()
+     * @see \FreeElephants\AltEra\CalendarInterface::getElapsedYears()
      *
      */
     public function getElapsedYears(){
@@ -72,7 +72,7 @@ class Calendar implements CalendarMutableInterface
     /**
      *
      * (non-PHPdoc)
-     * @see \samizdam\GameCalendar\CalendarInterface::getMoths()
+     * @see \FreeElephants\AltEra\CalendarInterface::getMoths()
      *
      */
     public function getMonths(){

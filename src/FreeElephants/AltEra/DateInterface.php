@@ -1,6 +1,6 @@
 <?php
 
-namespace samizdam\GameCalendar;
+namespace FreeElephants\AltEra;
 
 /**
  * Value object for Date of Calendar

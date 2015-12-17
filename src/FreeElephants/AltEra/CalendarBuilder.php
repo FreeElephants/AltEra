@@ -1,8 +1,8 @@
 <?php
 
-namespace samizdam\GameCalendar;
+namespace FreeElephants\AltEra;
 
-use samizdam\GameCalendar\Exception\ArgumentException;
+use FreeElephants\AltEra\Exception\ArgumentException;
 /**
  *
  * @author samizdam
@@ -28,7 +28,7 @@ class CalendarBuilder implements CalendarBuilderInterface
     /**
      *
      * (non-PHPdoc)
-     * @see \samizdam\GameCalendar\CalendarBuilderInterface::addMonth()
+     * @see \FreeElephants\AltEra\CalendarBuilderInterface::addMonth()
      *
      */
     public function addMonth($name, $numberOfDays){
@@ -40,7 +40,7 @@ class CalendarBuilder implements CalendarBuilderInterface
     /**
      *
      * (non-PHPdoc)
-     * @see \samizdam\GameCalendar\CalendarBuilderInterface::getCalendar()
+     * @see \FreeElephants\AltEra\CalendarBuilderInterface::getCalendar()
      *
      * @return CalendarInterface
      */

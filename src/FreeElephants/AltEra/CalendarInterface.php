@@ -1,13 +1,13 @@
 <?php
 
-namespace samizdam\GameCalendar;
+namespace FreeElephants\AltEra;
 
 /**
  * Facade
  *
  * @author samizdam
  *
- * @package samizdam\GameCalendar
+ * @package FreeElephants\AltEra
  */
 interface CalendarInterface
 {
