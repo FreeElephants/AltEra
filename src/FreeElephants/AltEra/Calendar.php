@@ -3,6 +3,8 @@
 namespace FreeElephants\AltEra;
 
 use FreeElephants\AltEra\Exception\ArgumentException;
+use FreeElephants\AltEra\TimeUnit\Date;
+use FreeElephants\AltEra\TimeUnit\DateInterface;
 /**
  *
  * @author samizdam
@@ -69,7 +71,7 @@ class Calendar implements CalendarMutableInterface
     /**
      *
      *
-     * @return int
+     * @return DateInterface
      */
     public function getCurrentDate(){
         return new Date($this);

@@ -1,6 +1,11 @@
 <?php
 
-namespace FreeElephants\AltEra;
+namespace FreeElephants\AltEra\TimeUnit;
+
+use FreeElephants\AltEra\AbstractCalendarUnitTestCase;
+use FreeElephants\AltEra\Calendar;
+use FreeElephants\AltEra\Month;
+use FreeElephants\AltEra\MonthInterface;
 
 /**
  *
@@ -20,7 +25,7 @@ class DateTest extends AbstractCalendarUnitTestCase
 
     public function testGetMonth()
     {
-        $this->markTestSkipped("Not implemented now");
+        $this->markTestIncomplete();
         $calendar = new Calendar();
         $calendar->addMonth(new Month("foo", 1));
         $date = new Date($calendar);

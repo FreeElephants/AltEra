@@ -1,8 +1,9 @@
 <?php
 
-namespace FreeElephants\AltEra;
+namespace FreeElephants\AltEra\TimeUnit;
 
 use FreeElephants\AltEra\Interval\IntervalCalculator;
+use FreeElephants\AltEra\CalendarInterface;
 /**
  *
  * @author samizdam

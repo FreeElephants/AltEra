@@ -2,6 +2,7 @@
 
 namespace FreeElephants\AltEra;
 
+use FreeElephants\AltEra\TimeUnit\DateInterface;
 /**
  *
  * @author samizdam

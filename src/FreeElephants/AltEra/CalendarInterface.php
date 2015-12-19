@@ -2,6 +2,8 @@
 
 namespace FreeElephants\AltEra;
 
+use FreeElephants\AltEra\TimeUnit\DateInterface;
+
 /**
  * Facade
  *
@@ -32,7 +34,7 @@ interface CalendarInterface
     /**
      * Get Date object for current timestamp with offset from initial.
      *
-     * @return int
+     * @return DateInterface
      */
     public function getCurrentDate();
 
