@@ -1,6 +1,8 @@
 <?php
 
-namespace FreeElephants\AltEra;
+namespace FreeElephants\AltEra\TimeUnit;
+
+use FreeElephants\AltEra\AbstractCalendarUnitTestCase;
 
 /**
  *

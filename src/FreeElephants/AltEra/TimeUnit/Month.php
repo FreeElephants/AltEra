@@ -1,5 +1,6 @@
 <?php
-namespace FreeElephants\AltEra;
+
+namespace FreeElephants\AltEra\TimeUnit;
 
 /**
  *

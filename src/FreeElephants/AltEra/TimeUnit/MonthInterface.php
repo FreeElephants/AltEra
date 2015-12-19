@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeElephants\AltEra;
+namespace FreeElephants\AltEra\TimeUnit;
 
 /**
  * Value object for Mothr of Calendar

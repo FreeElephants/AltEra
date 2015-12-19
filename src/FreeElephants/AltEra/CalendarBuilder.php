@@ -3,6 +3,7 @@
 namespace FreeElephants\AltEra;
 
 use FreeElephants\AltEra\Exception\ArgumentException;
+use FreeElephants\AltEra\TimeUnit\Month;
 /**
  *
  * @author samizdam

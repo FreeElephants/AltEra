@@ -4,9 +4,6 @@ namespace FreeElephants\AltEra\TimeUnit;
 
 use FreeElephants\AltEra\AbstractCalendarUnitTestCase;
 use FreeElephants\AltEra\Calendar;
-use FreeElephants\AltEra\Month;
-use FreeElephants\AltEra\MonthInterface;
-
 /**
  *
  * @author samizdam

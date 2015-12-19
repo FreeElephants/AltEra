@@ -5,6 +5,7 @@ namespace FreeElephants\AltEra;
 use FreeElephants\AltEra\Exception\ArgumentException;
 use FreeElephants\AltEra\TimeUnit\Date;
 use FreeElephants\AltEra\TimeUnit\DateInterface;
+use FreeElephants\AltEra\TimeUnit\MonthInterface;
 /**
  *
  * @author samizdam
