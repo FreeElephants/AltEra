@@ -33,21 +33,21 @@ interface CalendarInterface
     public function getScale();
 
     /**
-     * Get Date object for current timestamp with offset from initial.
+     * Get alt Date object for current timestamp.
      *
      * @return DateInterface
      */
     public function getCurrentDate();
 
     /**
-     * Get days from initial.
+     * Get absolute time from initial timestamp to current in alt days.
      *
      * @return int
      */
     public function getElapsedDays();
 
     /**
-     * Get years from initial.
+     * Get absolute time from initial timestamp to current in alt years.
      *
      * @return int
      */

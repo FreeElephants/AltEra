@@ -14,7 +14,7 @@ class IntervalCalculatorTest extends AbstractCalendarUnitTestCase
 
     const SEC_IN_REAL_DAY = 60 * 60 * 24;
 
-    public function testGetDaysDiff()
+    public function testGetDaysDiffWithRealTimeUnitScale()
     {
         $initialTimestamp = 0;
         $thirdDay = \DateTime::createFromFormat("Y-m-d", "1970-01-03");
@@ -26,7 +26,7 @@ class IntervalCalculatorTest extends AbstractCalendarUnitTestCase
         $this->assertEquals(2, $diff);
     }
 
-    public function testGetDaysDiffWithAltScale()
+    public function testGetDaysDiffWithHalfScale()
     {
         $initialTimestamp = 0;
         $thirdAltDayDateTime = \DateTime::createFromFormat("Y-m-d H:i:s", "1970-01-02 12:00:01", new \DateTimeZone('UTC'));
