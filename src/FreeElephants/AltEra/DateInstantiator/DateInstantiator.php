@@ -20,6 +20,7 @@ class DateInstantiator implements DateInstantiatorInterface
         $year = 0;
         $month = new Month('foo', 31);
         $day = 1;
+        $absoluteDaysDiff = $this->getDaysDiff($calendar->getInitialTimestamp(), $timestamp, $calendar->getScale());
         return new Date($year, $month, $day);
     }
 

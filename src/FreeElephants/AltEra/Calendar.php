@@ -3,7 +3,6 @@
 namespace FreeElephants\AltEra;
 
 use FreeElephants\AltEra\Exception\ArgumentException;
-use FreeElephants\AltEra\TimeUnit\Date;
 use FreeElephants\AltEra\TimeUnit\DateInterface;
 use FreeElephants\AltEra\TimeUnit\MonthInterface;
 use FreeElephants\AltEra\DateInstantiator\DateInstantiator;
@@ -38,7 +37,7 @@ class Calendar implements CalendarMutableInterface
 
     public function setScale($realSecPerAltDay)
     {
-        $this->scale = $realSecPerAltDay;
+        $this->scale = (int) $realSecPerAltDay;
     }
 
     public function getScale()
@@ -78,7 +77,8 @@ class Calendar implements CalendarMutableInterface
      *
      * @return DateInterface
      */
-    public function getCurrentDate(){
+    public function getCurrentDate()
+    {
         return $this->dateInstatiator->buildDate($this, time());
     }
 
@@ -87,7 +87,8 @@ class Calendar implements CalendarMutableInterface
      *
      * @return int
      */
-    public function getElapsedDays(){
+    public function getElapsedDays()
+    {
 
     }
 
@@ -97,7 +98,8 @@ class Calendar implements CalendarMutableInterface
      * @see \FreeElephants\AltEra\CalendarInterface::getElapsedYears()
      *
      */
-    public function getElapsedYears(){
+    public function getElapsedYears()
+    {
 
     }
 
@@ -108,7 +110,8 @@ class Calendar implements CalendarMutableInterface
      * @see \FreeElephants\AltEra\CalendarInterface::getMoths()
      *
      */
-    public function getMonths(){
+    public function getMonths()
+    {
 
         return array_values($this->monthsMap);
     }

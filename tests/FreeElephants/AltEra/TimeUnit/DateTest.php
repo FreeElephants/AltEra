@@ -26,4 +26,11 @@ class DateTest extends AbstractCalendarUnitTestCase
         $this->assertEquals($month, $date->getMonth());
     }
 
+    public function testGetYear()
+    {
+        $month = $this->getMock(MonthInterface::class);
+        $date = new Date(1999, $month, 1);
+        $this->assertEquals(1999, $date->getYear());
+    }
+
 }

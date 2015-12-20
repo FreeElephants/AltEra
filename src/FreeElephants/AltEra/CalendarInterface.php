@@ -6,7 +6,7 @@ use FreeElephants\AltEra\TimeUnit\DateInterface;
 use FreeElephants\AltEra\TimeUnit\MonthInterface;
 
 /**
- * Facade
+ * Facade: main public interface of AltEra package.
  *
  * @author samizdam
  *
