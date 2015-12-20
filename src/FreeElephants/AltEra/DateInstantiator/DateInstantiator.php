@@ -1,13 +1,13 @@
 <?php
 
-namespace FreeElephants\AltEra\Interval;
+namespace FreeElephants\AltEra\DateInstantiator;
 
 /**
  *
  * @author samizdam
  *
  */
-class IntervalCalculator implements IntervalCalculatorInterface
+class DateInstantiator implements DateInstantiatorInterface
 {
 
     public function getDaysDiff($initialTimestamp, $actualTimestamp, $scale)

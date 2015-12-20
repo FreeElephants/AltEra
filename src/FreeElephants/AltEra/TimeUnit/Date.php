@@ -2,8 +2,9 @@
 
 namespace FreeElephants\AltEra\TimeUnit;
 
-use FreeElephants\AltEra\Interval\IntervalCalculator;
 use FreeElephants\AltEra\CalendarInterface;
+use FreeElephants\AltEra\DateInstantiator\DateInstantiator;
+
 /**
  *
  * @author samizdam
@@ -36,7 +37,7 @@ class Date implements DateInterface
 
     private function initDateValues()
     {
-        $calculator = new IntervalCalculator();
+        $calculator = new DateInstantiator();
         $this->day = $calculator->getDaysDiff($this->calendar->getInitialTimestamp(), $this->timestamp, $this->calendar->getScale());
     }
 

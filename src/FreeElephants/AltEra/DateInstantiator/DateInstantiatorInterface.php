@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeElephants\AltEra\Interval;
+namespace FreeElephants\AltEra\DateInstantiator;
 
 use FreeElephants\AltEra\CalendarInterface;
 
@@ -9,7 +9,7 @@ use FreeElephants\AltEra\CalendarInterface;
  * @author samizdam
  *
  */
-interface IntervalCalculatorInterface
+interface DateInstantiatorInterface
 {
 
     /**

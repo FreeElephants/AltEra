@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeElephants\AltEra\Interval;
+namespace FreeElephants\AltEra\DateInstantiator;
 
 use FreeElephants\AltEra\AbstractCalendarUnitTestCase;
 
@@ -9,7 +9,7 @@ use FreeElephants\AltEra\AbstractCalendarUnitTestCase;
  * @author samizdam
  *
  */
-class IntervalCalculatorTest extends AbstractCalendarUnitTestCase
+class DateInstantiatorTest extends AbstractCalendarUnitTestCase
 {
 
     const SEC_IN_REAL_DAY = 60 * 60 * 24;
@@ -21,7 +21,7 @@ class IntervalCalculatorTest extends AbstractCalendarUnitTestCase
         $actualTimestamp = $thirdDay->getTimestamp();
         $scale = self::SEC_IN_REAL_DAY; // equals with real time units.
 
-        $calc = new IntervalCalculator();
+        $calc = new DateInstantiator();
         $diff = $calc->getDaysDiff($initialTimestamp, $actualTimestamp, $scale);
         $this->assertEquals(2, $diff);
     }
@@ -33,7 +33,7 @@ class IntervalCalculatorTest extends AbstractCalendarUnitTestCase
         $actualTimestamp = $thirdAltDayDateTime->getTimestamp();
         $scale = self::SEC_IN_REAL_DAY / 2; // half of real time units.
 
-        $calc = new IntervalCalculator();
+        $calc = new DateInstantiator();
         $diff = $calc->getDaysDiff($initialTimestamp, $actualTimestamp, $scale);
         $this->assertEquals(3, $diff);
     }
