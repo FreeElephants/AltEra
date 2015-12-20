@@ -1,6 +1,6 @@
 # GameCalendar Library
 
-This Project implements https://github.com/MagicGreenHat/Kingdom/issues/38 , but can be useful in any php application, that need customizable Calendor (not traditional).  
+This Project implements https://github.com/MagicGreenHat/Kingdom/issues/38 , but can be useful in any php application, that need customizable Calendar (not traditional).  
 
 ## Features
 - Custom number of named months in year. 
