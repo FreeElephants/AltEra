@@ -12,18 +12,12 @@ interface DateInterface
 {
 
     /**
-     * Get year number for this Date.
+     * Get Date Year.
      *
      * @return int
      */
     public function getYear();
 
-    /**
-     * Get day number for this Date.
-     *
-     * @return int
-     */
-    public function getDay();
 
     /**
      * Get Date Month.
@@ -31,5 +25,13 @@ interface DateInterface
      * @return MonthInterface
      */
     public function getMonth();
+
+    /**
+     * Get Date day of month.
+     *
+     * @return int
+     */
+    public function getDayOfMonth();
+
 
 }

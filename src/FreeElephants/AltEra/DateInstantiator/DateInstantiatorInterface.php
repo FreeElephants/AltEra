@@ -3,6 +3,7 @@
 namespace FreeElephants\AltEra\DateInstantiator;
 
 use FreeElephants\AltEra\CalendarInterface;
+use FreeElephants\AltEra\TimeUnit\DateInterface;
 
 /**
  *
@@ -11,6 +12,15 @@ use FreeElephants\AltEra\CalendarInterface;
  */
 interface DateInstantiatorInterface
 {
+
+    /**
+     * Create Date from configured Calendar for given timestamp.
+     *
+     * @param CalendarInterface $calendar
+     * @param int $timestamp
+     * @return DateInterfaces
+     */
+    public function buildDate(CalendarInterface $calendar, $timestamp);
 
     /**
      * Get differance between timestamp in AltEra Calendar Days.

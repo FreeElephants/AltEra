@@ -2,9 +2,6 @@
 
 namespace FreeElephants\AltEra\TimeUnit;
 
-use FreeElephants\AltEra\CalendarInterface;
-use FreeElephants\AltEra\DateInstantiator\DateInstantiator;
-
 /**
  *
  * @author samizdam
@@ -13,35 +10,38 @@ use FreeElephants\AltEra\DateInstantiator\DateInstantiator;
 class Date implements DateInterface
 {
 
-    private $calendar;
+    /**
+     *
+     * @var int
+     */
+    private $year;
 
-    private $timestamp;
-
-    private $day;
-
+    /**
+     *
+     * @var MonthInterface
+     */
     private $month;
 
     /**
      *
-     * if $timestamp is null, current value will be use for calculation
-     *
-     * @param CalendarInterface $calendar
-     * @param int $timestamp
+     * @var int
      */
-    public function __construct(CalendarInterface $calendar, $timestamp = null)
+    private $day;
+
+    /**
+     *
+     * @param int $year
+     * @param MonthInterface $month
+     * @param int $dayOfMonth
+     */
+    public function __construct($year, MonthInterface $month, $dayOfMonth)
     {
-        $this->calendar = $calendar;
-        $this->timestamp = $timestamp ? : time();
-        $this->initDateValues();
+        $this->year = $year;
+        $this->month = $month;
+        $this->day = $dayOfMonth;
     }
 
-    private function initDateValues()
-    {
-        $calculator = new DateInstantiator();
-        $this->day = $calculator->getDaysDiff($this->calendar->getInitialTimestamp(), $this->timestamp, $this->calendar->getScale());
-    }
-
-    public function getDay()
+    public function getDayOfMonth()
     {
         return $this->day;
     }
@@ -53,7 +53,7 @@ class Date implements DateInterface
 
     public function getYear()
     {
-
+        return $this->year;
     }
 
 }

@@ -3,7 +3,6 @@
 namespace FreeElephants\AltEra\TimeUnit;
 
 use FreeElephants\AltEra\AbstractCalendarUnitTestCase;
-use FreeElephants\AltEra\Calendar;
 
 /**
  *
@@ -13,21 +12,18 @@ use FreeElephants\AltEra\Calendar;
 class DateTest extends AbstractCalendarUnitTestCase
 {
 
-    public function testGetDay()
+    public function testGetDayOfMonth()
     {
-        $calendar = new Calendar();
-        $calendar->addMonth(new Month("foo", 1));
-        $date = new Date($calendar);
-        $this->assertEquals(0, $date->getDay());
+        $month = $this->getMock(MonthInterface::class);
+        $date = new Date(1999, $month, 1);
+        $this->assertEquals(1, $date->getDayOfMonth());
     }
 
     public function testGetMonth()
     {
-        $this->markTestIncomplete();
-        $calendar = new Calendar();
-        $calendar->addMonth(new Month("foo", 1));
-        $date = new Date($calendar);
-        $this->assertInstanceOf(MonthInterface::class, $date->getMonth());
+        $month = $this->getMock(MonthInterface::class);
+        $date = new Date(1999, $month, 1);
+        $this->assertEquals($month, $date->getMonth());
     }
 
 }

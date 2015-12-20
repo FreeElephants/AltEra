@@ -6,6 +6,7 @@ use FreeElephants\AltEra\Exception\ArgumentException;
 use FreeElephants\AltEra\TimeUnit\Date;
 use FreeElephants\AltEra\TimeUnit\DateInterface;
 use FreeElephants\AltEra\TimeUnit\MonthInterface;
+use FreeElephants\AltEra\DateInstantiator\DateInstantiator;
 /**
  *
  * @author samizdam
@@ -20,6 +21,8 @@ class Calendar implements CalendarMutableInterface
 
     private $monthsMap = [];
 
+    private $dateInstatiator;
+
 
     /**
      *
@@ -30,6 +33,7 @@ class Calendar implements CalendarMutableInterface
     public function __construct($timestamp = null)
     {
         $this->setInitialTimestamp($timestamp ?: time());
+        $this->dateInstatiator = new DateInstantiator();
     }
 
     public function setScale($realSecPerAltDay)
@@ -75,7 +79,7 @@ class Calendar implements CalendarMutableInterface
      * @return DateInterface
      */
     public function getCurrentDate(){
-        return new Date($this);
+        return $this->dateInstatiator->buildDate($this, time());
     }
 
     /**
