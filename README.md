@@ -1,4 +1,4 @@
-# GameCalendar Library
+# AltEra
 
 This Project implements https://github.com/MagicGreenHat/Kingdom/issues/38 , but can be useful in any php application, that need customizable Calendar (not traditional).  
 
