@@ -3,6 +3,7 @@
 namespace FreeElephants\AltEra;
 
 use FreeElephants\AltEra\TimeUnit\MonthInterface;
+
 /**
  *
  * @author samizdam
@@ -25,7 +26,7 @@ interface CalendarMutableInterface extends CalendarInterface
      * @param int $timestamp
      * @return void
      */
-    public function setInitialTImestamp($timestamp);
+    public function setInitialTimestamp($timestamp);
 
     /**
      * Set scale for mapping between real and alt dates.

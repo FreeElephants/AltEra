@@ -29,7 +29,7 @@ class Calendar implements CalendarMutableInterface
      */
     public function __construct($timestamp = null)
     {
-        $this->setInitialTImestamp($timestamp ?: time());
+        $this->setInitialTimestamp($timestamp ?: time());
     }
 
     public function setScale($realSecPerAltDay)
