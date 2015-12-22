@@ -28,7 +28,7 @@ $calendar = $builder->getCalendar();
 $calendar->getName(); // will return 3 Months Based Calendar
 $calendar->getNumberOfDaysInYear(); // will return 33 - sum of days in all months 
 
-`
+```
 
 ## Author
 
