@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeElephants\AltEra;
+namespace FreeElephants\AltEra\Calendar;
 
 use FreeElephants\AltEra\Exception\ArgumentException;
 use FreeElephants\AltEra\TimeUnit\DateInterface;

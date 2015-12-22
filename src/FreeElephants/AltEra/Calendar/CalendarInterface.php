@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeElephants\AltEra;
+namespace FreeElephants\AltEra\Calendar;
 
 use FreeElephants\AltEra\TimeUnit\DateInterface;
 use FreeElephants\AltEra\TimeUnit\MonthInterface;

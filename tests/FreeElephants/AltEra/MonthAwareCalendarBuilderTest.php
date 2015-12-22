@@ -2,6 +2,7 @@
 
 namespace FreeElephants\AltEra;
 
+use FreeElephants\AltEra\Calendar\CalendarInterface;
 /**
  *
  * @author samizdam

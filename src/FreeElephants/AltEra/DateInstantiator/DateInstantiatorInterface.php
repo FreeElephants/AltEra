@@ -2,7 +2,7 @@
 
 namespace FreeElephants\AltEra\DateInstantiator;
 
-use FreeElephants\AltEra\CalendarInterface;
+use FreeElephants\AltEra\Calendar\CalendarInterface;
 use FreeElephants\AltEra\TimeUnit\DateInterface;
 
 /**

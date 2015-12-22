@@ -3,6 +3,9 @@
 namespace FreeElephants\AltEra;
 
 
+use FreeElephants\AltEra\Calendar\Calendar;
+use FreeElephants\AltEra\Calendar\CalendarMutableInterface;
+use FreeElephants\AltEra\Calendar\CalendarInterface;
 /**
  *
  * @author samizdam

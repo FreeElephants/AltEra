@@ -1,10 +1,11 @@
 <?php
 
-namespace FreeElephants\AltEra;
+namespace FreeElephants\AltEra\Calendar;
 
 use FreeElephants\AltEra\TimeUnit\DateInterface;
 use FreeElephants\AltEra\TimeUnit\MonthInterface;
 use FreeElephants\AltEra\Exception\ArgumentException;
+use FreeElephants\AltEra\AbstractCalendarUnitTestCase;
 
 /**
  *
