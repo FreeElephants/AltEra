@@ -67,4 +67,11 @@ interface CalendarInterface
      */
     public function getMonths();
 
+    /**
+     *
+     *
+     * @return int
+     */
+    public function getNumberOfDaysInYear();
+
 }

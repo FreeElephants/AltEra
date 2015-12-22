@@ -17,13 +17,12 @@ Build new Calendar instanse with Builder:
 
 use FreeElephants\AltEra\CalendarBuilder;
 
+// Lets create calendar with 3 differance months
 $builder = new CalendarBuilder();
-// Lets create calendar with 3 months
-$builder->addMonth("first", 10);
-$builder->addMonth("middle", 11);
-$builder->addMonth("last", 12);
 
-
+$builder->addMonth("first", 10)
+		->addMonth("middle", 11)
+		->addMonth("last", 12);
 
 `
 

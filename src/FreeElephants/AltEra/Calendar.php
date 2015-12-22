@@ -143,9 +143,16 @@ class Calendar implements CalendarMutableInterface
      */
     public function getMonths()
     {
-
         return array_values($this->monthsMap);
     }
 
+    public function getNumberOfDaysInYear()
+    {
+        $daysByMonths = array_map(function(MonthInterface $month){
+            return $month->getNumberOfDays();
+        }, $this->getMonths());
+
+        return array_sum($daysByMonths);
+    }
 
 }
