@@ -12,7 +12,7 @@ This Project implements https://github.com/MagicGreenHat/Kingdom/issues/38 , but
 
 Build new Calendar instanse with Builder:
 
-`
+```php
 <?php
 
 use FreeElephants\AltEra\Builder\MonthAwareCalendarBuilder;
