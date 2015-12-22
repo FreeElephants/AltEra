@@ -13,6 +13,14 @@ interface CalendarMutableInterface extends CalendarInterface
 {
 
     /**
+     * Set name for Calendar
+     *
+     * @param string $name
+     * @return void
+     */
+    public function setName($name);
+
+    /**
      *
      *
      * @param MonthInterface $month

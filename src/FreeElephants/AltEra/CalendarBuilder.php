@@ -2,8 +2,8 @@
 
 namespace FreeElephants\AltEra;
 
-use FreeElephants\AltEra\Exception\ArgumentException;
 use FreeElephants\AltEra\TimeUnit\Month;
+
 /**
  *
  * @author samizdam
@@ -12,7 +12,12 @@ use FreeElephants\AltEra\TimeUnit\Month;
 class CalendarBuilder implements CalendarBuilderInterface
 {
 
+    const DEFAULT_CALENDAR_NAME = "AltEra Example Calandar";
 
+    /**
+     *
+     * @var CalendarMutableInterface
+     */
     private $calendar;
 
     /**
@@ -20,10 +25,15 @@ class CalendarBuilder implements CalendarBuilderInterface
      *
      * @return return_type
      */
-    public function __construct()
+    public function __construct($calendarName = self::DEFAULT_CALENDAR_NAME)
     {
         $this->calendar = new Calendar();
+        $this->calendar->setName($calendarName);
+    }
 
+    public function setCalendarName($name)
+    {
+        $this->calendar->setName($name);
     }
 
     /**
