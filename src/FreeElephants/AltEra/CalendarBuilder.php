@@ -28,7 +28,7 @@ class CalendarBuilder implements CalendarBuilderInterface
     public function __construct($calendarName = self::DEFAULT_CALENDAR_NAME)
     {
         $this->calendar = new Calendar();
-        $this->calendar->setName($calendarName);
+        $this->setCalendarName($calendarName);
     }
 
     public function setCalendarName($name)

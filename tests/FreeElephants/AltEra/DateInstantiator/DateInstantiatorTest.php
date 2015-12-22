@@ -17,7 +17,7 @@ class DateInstantiatorTest extends AbstractCalendarUnitTestCase
     public function testGetDaysDiffWithRealTimeUnitScale()
     {
         $initialTimestamp = 0;
-        $thirdDay = \DateTime::createFromFormat("Y-m-d", "1970-01-03");
+        $thirdDay = \DateTime::createFromFormat("Y-m-d", "1970-01-03", new \DateTimeZone('UTC'));
         $actualTimestamp = $thirdDay->getTimestamp();
         $scale = self::SEC_IN_REAL_DAY; // equals with real time units.
 

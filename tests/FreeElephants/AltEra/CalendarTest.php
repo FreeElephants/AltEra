@@ -47,4 +47,20 @@ class CalendarTest extends AbstractCalendarUnitTestCase
         $calendar->setScale(1);
         $this->assertEquals(1, $calendar->getScale());
     }
+
+    public function testGetNumberOfDaysInYear()
+    {
+        $calendar = new Calendar();
+        $month = $this->getMock(MonthInterface::class);
+        $month->method("getNumberOfDays")->willReturn(256);
+        $calendar->addMonth($month);
+        $this->assertEquals(256, $calendar->getNumberOfDaysInYear());
+    }
+
+    public function testGetName()
+    {
+        $calendar = new Calendar();
+        $calendar->setName("foo");
+        $this->assertEquals("foo", $calendar->getName());
+    }
 }
