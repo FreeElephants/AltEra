@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeElephants\AltEra;
+namespace FreeElephants\AltEra\Builder;
 
 /**
  * Use this Builder for create Calendar with Season Unit supports,

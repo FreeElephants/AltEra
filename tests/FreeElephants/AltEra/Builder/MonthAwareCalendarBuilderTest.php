@@ -1,8 +1,10 @@
 <?php
 
-namespace FreeElephants\AltEra;
+namespace FreeElephants\AltEra\Builder;
 
 use FreeElephants\AltEra\Calendar\CalendarInterface;
+use FreeElephants\AltEra\AbstractCalendarUnitTestCase;
+
 /**
  *
  * @author samizdam
