@@ -12,14 +12,6 @@ interface CalendarBuilderInterface
 
     /**
      *
-     * @param string $name
-     * @param int $numberOfDays
-     * @return self
-     */
-    public function addMonth($name, $numberOfDays);
-
-    /**
-     *
      *
      * @param string $name
      * @return self

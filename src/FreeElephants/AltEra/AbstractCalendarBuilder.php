@@ -2,23 +2,25 @@
 
 namespace FreeElephants\AltEra;
 
-use FreeElephants\AltEra\TimeUnit\Month;
 
 /**
  *
  * @author samizdam
  *
  */
-class CalendarBuilder implements CalendarBuilderInterface
+abstract class AbstractCalendarBuilder implements CalendarBuilderInterface
 {
-
+    /**
+     *
+     * @var string
+     */
     const DEFAULT_CALENDAR_NAME = "AltEra Example Calandar";
 
     /**
      *
      * @var CalendarMutableInterface
      */
-    private $calendar;
+    protected $calendar;
 
     /**
      * Create builder for new Calendar object
@@ -36,17 +38,6 @@ class CalendarBuilder implements CalendarBuilderInterface
         $this->calendar->setName($name);
     }
 
-    /**
-     *
-     * (non-PHPdoc)
-     * @see \FreeElephants\AltEra\CalendarBuilderInterface::addMonth()
-     *
-     */
-    public function addMonth($name, $numberOfDays){
-        $month = new Month($name, $numberOfDays);
-        $this->calendar->addMonth($month);
-        return $this;
-    }
 
     /**
      *
@@ -59,4 +50,5 @@ class CalendarBuilder implements CalendarBuilderInterface
     {
         return $this->calendar;
     }
+
 }
