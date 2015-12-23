@@ -1,9 +1,6 @@
 {
     "name": "free-elephants/game-calendar",
     "type": "library",
-    "require-dev": {
-        "phpunit/phpunit": "^5.1"
-    },
     "license": "BSD",
     "authors": [
         {
@@ -11,7 +8,12 @@
             "email": "samizdam@inbox.ru"
         }
     ],
-    "require": {},
+    "suggest": {
+    	"symfony/yaml": "For parse calendar's configuration from Yaml"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.1"
+    },
     "autoload": {
     	"psr-4": {
     		"FreeElephants\\AltEra\\": "src/FreeElephants/AltEra"

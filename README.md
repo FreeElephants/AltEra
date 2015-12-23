@@ -5,6 +5,7 @@ This Project implements https://github.com/MagicGreenHat/Kingdom/issues/38 , but
 ## Features
 - Custom number of named months in year. 
 - Custom number of days for every month.
+- Seasons is supported.  
 - Standalone library without any dependencies. 
 - Well designed, implentated via TDD, compliant with psr's. 
 

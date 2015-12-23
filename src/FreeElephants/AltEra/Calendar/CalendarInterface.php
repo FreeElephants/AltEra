@@ -20,7 +20,7 @@ interface CalendarInterface
     const DEFAULT_SCALE = self::SEC_PER_DAY;
 
     /**
-     * Name of this Clandar
+     * Name of this Calendar
      *
      * @return string
      */
