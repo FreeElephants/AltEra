@@ -15,12 +15,37 @@ class ConvertConfigCommandTest extends AbstractCalendarUnitTestCase
 {
     public function testExecuteWithNonExistingSourceFile()
     {
-        $command = new ConvertConfigCommand("foo");
+        $command = new ConvertConfigCommand();
         $tester = new CommandTester($command);
         $this->setExpectedException(RuntimeException::class);
         $tester->execute([
             "source" => "foo.php",
             "dist" => "foo.json"
         ]);
+    }
+
+    public function testExecuteWithInvalidSourceFormat()
+    {
+        $command = new ConvertConfigCommand();
+        $tester = new CommandTester($command);
+        $this->setExpectedException(RuntimeException::class);
+        $tester->execute([
+            "source" => self::FIXTURE_PATH . "gregorian-month-based-ru.php",
+            "dist" => "foo.json",
+            "--input-format" => "txt",
+        ]);
+    }
+
+    public function testExecuteWithInvalidOutputFormat()
+    {
+        $command = new ConvertConfigCommand();
+        $tester = new CommandTester($command);
+        $this->setExpectedException(RuntimeException::class);
+        $tester->execute([
+            "source" => self::FIXTURE_PATH . "gregorian-month-based-ru.php",
+            "dist" => "foo.json",
+            "--output-format" => "txt",
+        ]);
+
     }
 }

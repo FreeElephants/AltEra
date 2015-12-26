@@ -8,15 +8,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use FreeElephants\AltEra\Console\Exception\RuntimeException;
 use Symfony\Component\Console\Input\InputOption;
-use FreeElephants\AltEra\Configuration\ConfigurationFieldEnum;
 use FreeElephants\AltEra\Configuration\ConfigurationFormatEnum;
+use FreeElephants\AltEra\Configuration\ConfigurationFormatNormalizer;
 
 /**
  *
  * @author samizdam
  *
  */
-class ConvertConfigCommand extends Command implements ConfigurationFormatEnum
+class ConvertConfigCommand extends AbstractCommand implements ConfigurationFormatEnum
 {
 
     const ARGUMENT_SOURCE = "source";
@@ -24,16 +24,15 @@ class ConvertConfigCommand extends Command implements ConfigurationFormatEnum
 
     const OPTION_FORCE = "force";
 
-    const OPTION_OUPUT_FORMAT = "ouput-format";
+    const OPTION_OUPUT_FORMAT = "output-format";
     const OPTION_INPUT_FORMAT = "input-format";
 
     const OPTION_DRY_RUN = "dry-run";
 
-    private $validFormats = [
-        self::FORMAT_JSON,
-        self::FORMAT_PHP,
-        self::FORMAT_YAML,
-    ];
+    public function getDefaultName()
+    {
+        return "convert-config";
+    }
 
     protected function configure()
     {
@@ -55,52 +54,26 @@ class ConvertConfigCommand extends Command implements ConfigurationFormatEnum
             throw new RuntimeException("Input file not exists. ");
         }
 
+        $configFormatNormalizer = new ConfigurationFormatNormalizer();
+
         if(!$inputFormat = $input->getOption(self::OPTION_INPUT_FORMAT)){
             $inputFormat = pathinfo($inputFilename, PATHINFO_EXTENSION);
         }
 
-        $inputFormat = $this->normalizeFormat($inputFormat);
+        $inputFormat = $configFormatNormalizer->normalizeFormat($inputFormat);
 
-        if(!$this->isValidFormat($inputFormat)){
-            throw new RuntimeException("{$inputFormat} not supported, valid values: " . join(", ", $this->validFormats));
+        if(!$configFormatNormalizer->isValidFormat($inputFormat)){
+            throw new RuntimeException("{$inputFormat} not supported, valid values: " . join(", ", $configFormatNormalizer->getValidFormats()));
         }
 
         if(!$outputFormat = $input->getOption(self::OPTION_OUPUT_FORMAT)){
             $outputFormat = pathinfo($outputFilename, PATHINFO_EXTENSION);
         }
 
-        $outputFormat = $this->normalizeFormat($outputFormat);
+        $outputFormat = $configFormatNormalizer->normalizeFormat($outputFormat);
 
-        if(!$this->isValidFormat($outputFormat)){
-            throw new RuntimeException("{$outputFormat} not supported, valid values: " . join(", ", $this->validFormats));
+        if(!$configFormatNormalizer->isValidFormat($outputFormat)){
+            throw new RuntimeException("{$outputFormat} not supported, valid values: " . join(", ", $configFormatNormalizer->getValidFormats()));
         }
-
-
-    }
-
-    /**
-     *
-     *
-     * @param string $format
-     * @return string
-     */
-    private function normalizeFormat($format)
-    {
-        $normalizedFormat = strtolower($format);
-        if($normalizedFormat === 'yml'){
-            $normalizedFormat = self::FORMAT_YAML;
-        }
-        return $normalizedFormat;
-    }
-
-    /**
-     *
-     *
-     * @param string $format
-     * @return bool
-     */
-    private function isValidFormat($format)
-    {
-        return in_array($this->normalizeFormat($format), $this->validFormats, true);
     }
 }
