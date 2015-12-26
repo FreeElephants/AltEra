@@ -23,6 +23,12 @@ abstract class AbstractCalendarUnitTestCase extends \PHPUnit_Framework_TestCase
 
     /**
      *
+     * @var string
+     */
+    const OUTPUT_PATH = __DIR__ . self::DS . "_output" . self::DS;
+
+    /**
+     *
      * @param string $filename
      * @return string
      */
