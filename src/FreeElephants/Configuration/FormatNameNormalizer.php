@@ -1,12 +1,12 @@
 <?php
-namespace FreeElephants\AltEra\Configuration;
+namespace FreeElephants\Configuration;
 
 /**
  *
  * @author samizdam
  *
  */
-class ConfigurationFormatNormalizer implements ConfigurationFormatEnum
+class FormatNameNormalizer implements FormatEnum
 {
 
     /**

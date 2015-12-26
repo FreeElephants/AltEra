@@ -19,7 +19,7 @@
     },
     "autoload": {
     	"psr-4": {
-    		"FreeElephants\\AltEra\\": "src/FreeElephants/AltEra"
+    		"FreeElephants\\": "src/FreeElephants/"
     	}
     },
     "autoload-dev": {

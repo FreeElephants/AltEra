@@ -1,15 +1,14 @@
 <?php
 
-namespace FreeElephants\AltEra\Configuration;
+namespace FreeElephants\Configuration;
 
 /**
  *
  * @author samizdam
  *
  */
-interface ConfigurationFormatEnum
+interface FormatEnum
 {
-
     const FORMAT_JSON = "json";
 
     const FORMAT_YAML = "yaml";
