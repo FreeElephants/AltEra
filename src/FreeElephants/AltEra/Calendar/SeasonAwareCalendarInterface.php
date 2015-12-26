@@ -10,7 +10,7 @@ use FreeElephants\AltEra\TimeUnit\SeasonInterface;
  * @author samizdam
  *
  */
-interface SeasonAwareCalendarInterface extends CalendarInterface
+interface SeasonAwareCalendarInterface
 {
 
     /**

@@ -15,9 +15,25 @@ interface CalendarFactoryInterface
     /**
      *
      *
-     * @param string $input
+     * @param string $yamlString
      * @return CalendarInterface
      */
-    public function createFromYaml($input);
+    public function createFromYaml($yamlString);
+
+    /**
+     *
+     *
+     * @param array $config
+     * @return CalendarInterface
+     */
+    public function createFromArray(array $config);
+
+    /**
+     *
+     *
+     * @param string $jsonString
+     * @return CalendarInterface
+     */
+    public function createFromJson($jsonString);
 
 }

@@ -1,10 +1,10 @@
 <?php
 namespace FreeElephants\AltEra;
 
-use Symfony\Component\Yaml\Yaml;
 use FreeElephants\AltEra\Builder\SeasonAwareCalendarBuilder;
 use FreeElephants\AltEra\Builder\MonthAwareCalendarBuilder;
 use FreeElephants\AltEra\Exception\InvalidConfigurationException;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  *
@@ -20,10 +20,14 @@ class CalendarFactory implements CalendarFactoryInterface
 
     const FIELD_CALENDAR_NAME = "name";
 
-    public function createFromYaml($input)
+    public function createFromYaml($yamlString)
     {
-        $config = Yaml::parse($input);
+        $config = Yaml::parse($yamlString);
+        return $this->createFromArray($config);
+    }
 
+    public function createFromArray(array $config)
+    {
         $calendarName = $this->isCalendarNameProvided($config) ? $config[self::FIELD_CALENDAR_NAME] : null;
 
         if ($this->isSeasonAwareConfig($config)) {
@@ -41,6 +45,15 @@ class CalendarFactory implements CalendarFactoryInterface
         } else {
             throw new InvalidConfigurationException("Configuration must provide seasons or months units. ");
         }
+
+        return $builder->buildCalandar();
+
+    }
+
+    public function createFromJson($jsonString)
+    {
+        $config = json_decode($jsonString);
+        return $this->createFromArray($config);
     }
 
     private function isSeasonAwareConfig(array $config)

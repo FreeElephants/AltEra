@@ -20,9 +20,9 @@ interface CalendarBuilderInterface
     public function setCalendarName($name);
 
     /**
-     *
+     * Finalize building, return configured Calendar instance and reset Builder state.
      *
      * @return CalendarInterface
      */
-    public function getCalendar();
+    public function buildCalandar();
 }

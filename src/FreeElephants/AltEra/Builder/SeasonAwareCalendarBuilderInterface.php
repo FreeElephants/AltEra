@@ -21,4 +21,12 @@ interface SeasonAwareCalendarBuilderInterface extends CalendarBuilderInterface
      */
     public function addSeason($name, array $months);
 
+    /**
+     *
+     *
+     * @param string $monthName
+     * @return self
+     */
+    public function setFirstMonthByName($monthName);
+
 }

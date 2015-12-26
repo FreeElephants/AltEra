@@ -7,12 +7,12 @@ use FreeElephants\AltEra\TimeUnit\MonthInterface;
 use FreeElephants\AltEra\Exception\LogicException;
 
 /**
- * TODO rename to SeasonsBasedCalendar
+ *
  *
  * @author samizdam
  *
  */
-class SeasonAwareCalendar extends Calendar implements SeasonsBasedMutableCalendarInterface
+class SeasonAwareCalendar extends Calendar implements SeasonAwareMutableCalendarInterface, SeasonAwareCalendarInterface
 {
 
     /**

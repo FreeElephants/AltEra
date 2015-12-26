@@ -9,7 +9,7 @@ use FreeElephants\AltEra\TimeUnit\SeasonInterface;
  * @author samizdam
  * @internal
  */
-interface SeasonsBasedMutableCalendarInterface
+interface SeasonAwareMutableCalendarInterface
 {
 
     public function addSeason(SeasonInterface $season);

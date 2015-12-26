@@ -25,16 +25,17 @@ abstract class AbstractCalendarBuilder implements CalendarBuilderInterface
      */
     protected $calendar;
 
-    /**
-     * Create builder for new Calendar object
-     *
-     * @return return_type
-     */
-    public function __construct($calendarName = self::DEFAULT_CALENDAR_NAME)
+    public function __construct()
     {
-        $this->calendar = new Calendar();
-        $this->setCalendarName($calendarName);
+        $this->setInitialState();
     }
+
+    /**
+     *
+     * @abstract
+     * @return CalendarInterface
+     */
+    protected abstract function createCalendarInstance();
 
     public function setCalendarName($name)
     {
@@ -43,15 +44,24 @@ abstract class AbstractCalendarBuilder implements CalendarBuilderInterface
 
 
     /**
-     *
-     * (non-PHPdoc)
-     * @see \FreeElephants\AltEra\CalendarBuilderInterface::getCalendar()
+     * TODO make abstract and implement login into this method.
      *
      * @return CalendarInterface
      */
-    public function getCalendar()
+    public function buildCalandar()
     {
-        return $this->calendar;
+        $calendar = $this->calendar;
+        $this->setInitialState();
+        return $calendar;
+    }
+
+    /**
+     *
+     * @return void
+     */
+    public function setInitialState()
+    {
+        $this->calendar = $this->createCalendarInstance();
     }
 
 }

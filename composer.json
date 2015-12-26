@@ -9,10 +9,12 @@
         }
     ],
     "suggest": {
-    	"symfony/yaml": "For parse calendar's configuration from Yaml"
+    	"symfony/yaml": "If you want parse calendar's configuration from Yaml,\n and have not installed 'yaml' PECL package. "
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.1"
+        "phpunit/phpunit": "^5.1",
+        "zendframework/zend-config": "2.*",
+        "zendframework/zend-console": "2.*"        
     },
     "autoload": {
     	"psr-4": {

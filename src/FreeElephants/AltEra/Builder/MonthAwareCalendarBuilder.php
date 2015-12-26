@@ -3,10 +3,12 @@
 namespace FreeElephants\AltEra\Builder;
 
 use FreeElephants\AltEra\TimeUnit\Month;
+use FreeElephants\AltEra\Calendar\Calendar;
 
 /**
  *
  * Use this Builder for create Calendar with Month support without Season Feature.
+ * TODO rename to MonthsBasedBuilder
  *
  * @author samizdam
  *
@@ -14,6 +16,10 @@ use FreeElephants\AltEra\TimeUnit\Month;
 class MonthAwareCalendarBuilder extends AbstractCalendarBuilder implements CalendarBuilderInterface
 {
 
+    protected function createCalendarInstance()
+    {
+        return new Calendar();
+    }
 
     /**
      *
