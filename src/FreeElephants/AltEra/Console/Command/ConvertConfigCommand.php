@@ -47,11 +47,11 @@ class ConvertConfigCommand extends AbstractCommand
         $this->addOption(self::OPTION_INPUT_FORMAT, "i", InputOption::VALUE_OPTIONAL, "use given format for input instead file extension.");
         $this->addOption(self::OPTION_OUPUT_FORMAT, "o", InputOption::VALUE_OPTIONAL, "use given format for output instead file extension.");
 
-        $this->addOption(self::OPTION_FORCE, "f", InputOption::VALUE_OPTIONAL, "override exists", false);
-        $this->addOption(self::OPTION_DRY_RUN, null, InputOption::VALUE_OPTIONAL, "not write output", false);
+        $this->addOption(self::OPTION_FORCE, "f", InputOption::VALUE_NONE, "override exists");
+        $this->addOption(self::OPTION_DRY_RUN, null, InputOption::VALUE_NONE, "not write output");
 
-        $this->addOption(self::OPTION_SHOW_OUTPUT, null, InputOption::VALUE_OPTIONAL, "Show output in console. ", false);
-        $this->addOption(self::OPTION_SHOW_INPUT, null, InputOption::VALUE_OPTIONAL, "Show source data in output. ", false);
+        $this->addOption(self::OPTION_SHOW_OUTPUT, null, InputOption::VALUE_NONE, "Show output in console. ");
+        $this->addOption(self::OPTION_SHOW_INPUT, null, InputOption::VALUE_NONE, "Show source data in output. ");
 
     }
 
@@ -97,7 +97,7 @@ class ConvertConfigCommand extends AbstractCommand
         $configWriter = (new WriterFactory())->createWriter($outputFormat);
         if($input->getOption(self::OPTION_SHOW_OUTPUT))
         {
-            $distData = $configWriter->toString($data);
+            $distData = $configWriter->toString($sourceData);
             $output->writeln($distData);
         }
 
