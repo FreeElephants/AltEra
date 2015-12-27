@@ -4,7 +4,7 @@ namespace FreeElephants\AltEra\Calendar;
 
 use FreeElephants\AltEra\TimeUnit\SeasonInterface;
 use FreeElephants\AltEra\TimeUnit\MonthInterface;
-use FreeElephants\AltEra\Exception\LogicException;
+use FreeElephants\AltEra\Exception\ArgumentException;
 
 /**
  *
@@ -19,24 +19,20 @@ class SeasonAwareCalendar extends Calendar implements SeasonAwareMutableCalendar
      *
      * @var SeasonInterface[]
      */
-    private $seasons = [];
+    private $seasonsMap = [];
 
     public function addSeason(SeasonInterface $season)
     {
-        $this->seasons[] = $season;
-        foreach ($season->getMonths() as $month){
-            parent::addMonth($month);
+        $seasonName = $season->getName();
+        if(array_key_exists($seasonName, $this->seasonsMap)){
+            throw new ArgumentException("Season with name '{$seasonName}' already added to this calendar. ");
         }
+        $this->seasons[$seasonName] = $season;
     }
 
     public function getSeasons()
     {
-        return $this->seasons;
-    }
-
-    public function addMonth(MonthInterface $month)
-    {
-        throw new LogicException("You can't add month into Seasons Based Calendar directly: use Seasons for grouping. ");
+        return array_values($this->seasons);
     }
 
 }

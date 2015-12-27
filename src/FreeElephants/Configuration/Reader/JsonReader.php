@@ -18,6 +18,6 @@ class JsonReader implements ReaderInterface
 
     public function readString($input)
     {
-        return json_decode($input);
+        return json_decode($input, JSON_OBJECT_AS_ARRAY);
     }
 }

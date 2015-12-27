@@ -17,6 +17,8 @@ class JsonWriter implements WriterInterface
 
     public function toString($data)
     {
-        return json_encode($data, JSON_PRETTY_PRINT);
+        // TODO configure options via special method
+        $options = JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE;
+        return json_encode($data, $options);
     }
 }

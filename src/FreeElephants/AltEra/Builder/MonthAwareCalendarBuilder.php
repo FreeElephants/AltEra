@@ -29,7 +29,12 @@ class MonthAwareCalendarBuilder extends AbstractCalendarBuilder implements Calen
      */
     public function addMonth($name, $numberOfDays){
         $month = new Month($name, $numberOfDays);
-        $this->calendar->addMonth($month);
+        $this->getCalendar()->addMonth($month);
         return $this;
+    }
+
+    protected function concreteBuild()
+    {
+        return $this->getCalendar();
     }
 }

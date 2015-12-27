@@ -18,7 +18,7 @@ class Season implements SeasonInterface
 
     /**
      *
-     * @var array
+     * @var MonthInterface[]
      */
     private $months = [];
 
@@ -31,7 +31,14 @@ class Season implements SeasonInterface
     public function __construct($name, array $months)
     {
         $this->name = $name;
-        $this->months = $months;
+        foreach ($months as $month){
+            $this->addMonth($month);
+        }
+    }
+
+    protected function addMonth(MonthInterface $month)
+    {
+        $this->months[] = $month;
     }
 
     public function getName()

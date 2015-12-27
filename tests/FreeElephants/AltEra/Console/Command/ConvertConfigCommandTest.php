@@ -76,28 +76,26 @@ class ConvertConfigCommandTest extends AbstractCalendarUnitTestCase
 
     public function testExecuteWithShowOutput()
     {
-        $this->markTestSkipped("TODO: correct usage for tester display. ");
         $command = new ConvertConfigCommand();
         $tester = new CommandTester($command);
         $outputFilename = self::OUTPUT_PATH . "foo.json";
         $tester->execute([
             "source" => self::FIXTURE_PATH . "gregorian-month-based-ru.php",
             "dist" => $outputFilename,
-            "--show-output"
+            "--show-output" => true
         ]);
         $this->assertContains('"name": "Григорианский календарь"', $tester->getDisplay(true));
     }
 
     public function testExecuteWithShowInput()
     {
-        $this->markTestSkipped("TODO: correct usage for tester display. ");
         $command = new ConvertConfigCommand();
         $tester = new CommandTester($command);
         $outputFilename = self::OUTPUT_PATH . "foo.json";
         $tester->execute([
             "source" => self::FIXTURE_PATH . "gregorian-month-based-ru.php",
             "dist" => $outputFilename,
-            "--show-input"
+            "--show-input" => true
         ]);
         $this->assertContains('"name" => "Григорианский календарь"', $tester->getDisplay(true));
     }

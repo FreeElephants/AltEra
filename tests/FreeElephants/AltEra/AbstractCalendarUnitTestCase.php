@@ -32,7 +32,7 @@ abstract class AbstractCalendarUnitTestCase extends \PHPUnit_Framework_TestCase
      * @param string $filename
      * @return string
      */
-    protected function loadYamlFixture($filename)
+    protected function loadFixture($filename)
     {
         return file_get_contents(self::FIXTURE_PATH . $filename);
     }

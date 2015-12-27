@@ -2,10 +2,9 @@
 
 namespace FreeElephants\AltEra\Builder;
 
-
-use FreeElephants\AltEra\Calendar\Calendar;
 use FreeElephants\AltEra\Calendar\CalendarMutableInterface;
 use FreeElephants\AltEra\Calendar\CalendarInterface;
+
 /**
  *
  * @author samizdam
@@ -23,7 +22,7 @@ abstract class AbstractCalendarBuilder implements CalendarBuilderInterface
      *
      * @var CalendarMutableInterface
      */
-    protected $calendar;
+    private $calendar;
 
     public function __construct()
     {
@@ -39,21 +38,27 @@ abstract class AbstractCalendarBuilder implements CalendarBuilderInterface
 
     public function setCalendarName($name)
     {
-        $this->calendar->setName($name);
+        $this->getCalendar()->setName($name);
     }
 
 
     /**
-     * TODO make abstract and implement login into this method.
      *
      * @return CalendarInterface
      */
-    public function buildCalandar()
+    final public function buildCalandar()
     {
-        $calendar = $this->calendar;
+        $calendar = $this->concreteBuild();
         $this->setInitialState();
         return $calendar;
     }
+
+    /**
+     *
+     *
+     * @return CalendarInterface
+     */
+    abstract protected function concreteBuild();
 
     /**
      *
@@ -62,6 +67,16 @@ abstract class AbstractCalendarBuilder implements CalendarBuilderInterface
     public function setInitialState()
     {
         $this->calendar = $this->createCalendarInstance();
+    }
+
+    /**
+     *
+     *
+     * @return CalendarInterface
+     */
+    protected function getCalendar()
+    {
+        return $this->calendar;
     }
 
 }

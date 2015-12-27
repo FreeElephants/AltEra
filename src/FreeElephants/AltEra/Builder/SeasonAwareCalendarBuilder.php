@@ -3,8 +3,9 @@
 namespace FreeElephants\AltEra\Builder;
 
 use FreeElephants\AltEra\TimeUnit\Season;
-use FreeElephants\AltEra\Calendar\SeasonAwareCalendar;
 use FreeElephants\AltEra\TimeUnit\SeasonInterface;
+use FreeElephants\AltEra\Calendar\SeasonAwareCalendar;
+use FreeElephants\AltEra\Exception\InvalidConfigurationException;
 
 /**
  * Use this Builder for create Calendar with Season Unit supports,
@@ -22,6 +23,8 @@ class SeasonAwareCalendarBuilder extends AbstractCalendarBuilder implements Seas
      */
     private $seasonMap = [];
 
+    private $firstMonthName;
+
     protected function createCalendarInstance()
     {
         return new SeasonAwareCalendar();
@@ -29,18 +32,51 @@ class SeasonAwareCalendarBuilder extends AbstractCalendarBuilder implements Seas
 
     public function addSeason($name, array $months)
     {
-        $season = new Season($name, $months);
         $this->seasonMap[$name] = $months;
+        return $this;
     }
 
     public function setFirstMonthByName($monthName)
     {
-
+        $this->firstMonthName = $monthName;
+        return $this;
     }
 
-    public function buildCalandar()
+    protected function concreteBuild()
     {
-        return $this->calendar;
+        $calendar = $this->getCalendar();
+        $monthsList = [];
+        foreach ($this->seasonMap as $name => $months)
+        {
+            $season = new Season($name, $months);
+            $calendar->addSeason($season);
+            foreach ($months as $month){
+                $monthsList[] = $month;
+            }
+        }
+
+        if($this->firstMonthName !== null){
+            $firstMonthNotFound = true;
+            $reorderedMonthsList = [0 => null];
+            foreach ($monthsList as $month){
+                if($this->firstMonthName === $month->getName()){
+                    $reorderedMonthsList[0] = $month;
+                    $firstMonthNotFound = false;
+                } else {
+                    $reorderedMonthsList[] = $month;
+                }
+            }
+            if($firstMonthNotFound){
+                throw new InvalidConfigurationException("First month '{$this->firstMonthName}' not found. ");
+            }
+            $monthsList = $reorderedMonthsList;
+        }
+
+        foreach ($monthsList as $month){
+            $calendar->addMonth($month);
+        }
+
+        return $calendar;
     }
 
 }

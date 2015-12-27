@@ -1,19 +1,12 @@
-seasons: 
-  - Spring: 
-    - March: 31
-    - April: 30
-    - May: 31
-  - Summer:
-    - June: 30
-    - July: 31
-    - August: 31
-  - Autumn:
-    - September: 30
-    - October: 31
-    - November: 30
-  - Winter:
-    - December: 31
-    - January: 31
-    - February: 28 
-    
-firstMonth: January
+name: 'Season Based Example'
+seasons:
+    -
+        name: First
+        months:
+            - { name: 'First Month of First Season', numberOfDays: 31 }
+            - { name: 'Second Month of First Season', numberOfDays: 32 }
+    -
+        name: Second
+        months:
+            - { name: 'First Month of Second Season', numberOfDays: 33 }
+            - { name: 'Second Month of Second Season', numberOfDays: 34 }

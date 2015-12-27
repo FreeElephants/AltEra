@@ -6,6 +6,8 @@ use FreeElephants\AltEra\Builder\MonthAwareCalendarBuilder;
 use FreeElephants\AltEra\Exception\InvalidConfigurationException;
 use Symfony\Component\Yaml\Yaml;
 use FreeElephants\AltEra\Configuration\ConfigurationFieldEnum;
+use FreeElephants\AltEra\TimeUnit\Month;
+use FreeElephants\Configuration\Reader\ReaderFactory;
 
 /**
  *
@@ -15,9 +17,22 @@ use FreeElephants\AltEra\Configuration\ConfigurationFieldEnum;
 class CalendarFactory implements CalendarFactoryInterface, ConfigurationFieldEnum
 {
 
+    private $configReaderFactory;
+
+    public function __construct()
+    {
+        $this->configReaderFactory = new ReaderFactory();
+    }
+
+    public function createFromJson($jsonString)
+    {
+        $config = $this->configReaderFactory->createReader(ReaderFactory::FORMAT_JSON)->readString($jsonString);
+        return $this->createFromArray($config);
+    }
+
     public function createFromYaml($yamlString)
     {
-        $config = Yaml::parse($yamlString);
+        $config = $this->configReaderFactory->createReader(ReaderFactory::FORMAT_YAML)->readString($yamlString);
         return $this->createFromArray($config);
     }
 
@@ -28,7 +43,12 @@ class CalendarFactory implements CalendarFactoryInterface, ConfigurationFieldEnu
         if ($this->isSeasonAwareConfig($config)) {
             $builder = new SeasonAwareCalendarBuilder($calendarName);
             $seasons = $config[self::FIELD_SEASONS];
-            foreach ($seasons as $name => $months){
+            foreach ($seasons as $seasonData){
+                $name = $seasonData["name"];
+                $months = [];
+                foreach ($seasonData[self::FIELD_MONTHS] as $monthData){
+                    $months[] = new Month($monthData["name"], $monthData["numberOfDays"]);
+                }
                 $builder->addSeason($name, $months);
             }
         } elseif ($this->isMonthAwareConfig($config)) {
@@ -43,12 +63,6 @@ class CalendarFactory implements CalendarFactoryInterface, ConfigurationFieldEnu
 
         return $builder->buildCalandar();
 
-    }
-
-    public function createFromJson($jsonString)
-    {
-        $config = json_decode($jsonString);
-        return $this->createFromArray($config);
     }
 
     private function isSeasonAwareConfig(array $config)

@@ -19,6 +19,7 @@ class YamlWriter implements WriterInterface
 
     public function toString($data)
     {
-        return Yaml::dump($data);
+        // TODO configure options via special method
+        return Yaml::dump($data, 4);
     }
 }
