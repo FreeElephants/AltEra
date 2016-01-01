@@ -4,7 +4,6 @@ namespace FreeElephants\AltEra;
 use FreeElephants\AltEra\Builder\SeasonAwareCalendarBuilder;
 use FreeElephants\AltEra\Builder\MonthAwareCalendarBuilder;
 use FreeElephants\AltEra\Exception\InvalidConfigurationException;
-use Symfony\Component\Yaml\Yaml;
 use FreeElephants\AltEra\Configuration\ConfigurationFieldEnum;
 use FreeElephants\AltEra\TimeUnit\Month;
 use FreeElephants\Configuration\Reader\ReaderFactory;

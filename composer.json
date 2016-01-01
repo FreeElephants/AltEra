@@ -8,11 +8,8 @@
             "email": "samizdam@inbox.ru"
         }
     ],
-    "suggest": {
-    	"symfony/yaml": "If you want parse calendar's configuration from Yaml,\n and have not installed 'yaml' PECL package. "
-    },
     "require": {
-    	"symfony/console": "*"
+    	"free-elephants/configuration": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.1"      

@@ -3,7 +3,6 @@
 namespace FreeElephants\AltEra\Calendar;
 
 use FreeElephants\AltEra\TimeUnit\SeasonInterface;
-use FreeElephants\AltEra\TimeUnit\MonthInterface;
 use FreeElephants\AltEra\Exception\ArgumentException;
 
 /**
@@ -27,12 +26,12 @@ class SeasonAwareCalendar extends Calendar implements SeasonAwareMutableCalendar
         if(array_key_exists($seasonName, $this->seasonsMap)){
             throw new ArgumentException("Season with name '{$seasonName}' already added to this calendar. ");
         }
-        $this->seasons[$seasonName] = $season;
+        $this->seasonsMap[$seasonName] = $season;
     }
 
     public function getSeasons()
     {
-        return array_values($this->seasons);
+        return array_values($this->seasonsMap);
     }
 
 }
