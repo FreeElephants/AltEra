@@ -9,6 +9,11 @@ This Project implements https://github.com/MagicGreenHat/Kingdom/issues/38 , but
 - Well designed, implentated via TDD (and therefore 100% covered with tests), compliant with psr's. 
 
 ## Usage
+Via composer: 
+
+```bash
+composer require free-elephants/altera
+```
 
 Build new Calendar instanse with Builder:
 
