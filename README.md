@@ -5,8 +5,8 @@ This Project implements https://github.com/MagicGreenHat/Kingdom/issues/38 , but
 ## Features
 - Custom number of named months in year. 
 - Custom number of days for every month.
-- Seasons is supported. 
-- Well designed, implentated via TDD, compliant with psr's. 
+- Seasons are supported. 
+- Well designed, implentated via TDD (and therefore 100% covered with tests), compliant with psr's. 
 
 ## Usage
 
@@ -25,8 +25,8 @@ $builder->addMonth("first", 10)
 		->addMonth("last", 12);
 
 $calendar = $builder->getCalendar();
-$calendar->getName(); // will return 3 Months Based Calendar
-$calendar->getNumberOfDaysInYear(); // will return 33 - sum of days in all months 
+$calendar->getName(); // will return "3 Months Based Calendar"
+$calendar->getNumberOfDaysInYear(); // will return "33" - sum of days in all months 
 
 ```
 
