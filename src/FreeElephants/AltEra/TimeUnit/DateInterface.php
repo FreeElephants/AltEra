@@ -2,6 +2,7 @@
 
 namespace FreeElephants\AltEra\TimeUnit;
 
+use FreeElephants\AltEra\Calendar\CalendarInterface;
 /**
  * Value object for Date of Calendar
  *
@@ -33,5 +34,18 @@ interface DateInterface
      */
     public function getDayOfMonth();
 
+    /**
+     *
+     *
+     * @param string $format
+     * @return string
+     */
+    public function format($format);
 
+    /**
+     *
+     *
+     * @return CalendarInterface
+     */
+    public function getCalendar();
 }
