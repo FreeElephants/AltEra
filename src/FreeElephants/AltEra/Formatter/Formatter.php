@@ -106,6 +106,10 @@ class Formatter implements FormatterInterface
             self::TOKEN_DAY_OF_MONTH => function (DateInterface $date) {
                 return $date->getDayOfMonth();
             },
+
+            self::TOKEN_DAY_OF_MONTH_ZERO => function (DateInterface $date) {
+                return str_pad($date->getDayOfMonth(), 2, '0', STR_PAD_LEFT);
+            }
         ];
     }
 }

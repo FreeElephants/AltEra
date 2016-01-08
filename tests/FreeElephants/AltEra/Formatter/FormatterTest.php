@@ -62,6 +62,40 @@ class FormatterTest extends AbstractCalendarUnitTestCase
         $this->assertEquals('Январь, 01, Янв, 1, 31', $formatter->format($date, $format));
     }
 
+    /**
+     *
+     * Day	---	---
+     * d	Day of the month, 2 digits with leading zeros	01 to 31
+     * j	Day of the month without leading zeros	1 to 31
+     */
+    public function testFormatDayOfMonth()
+    {
+        $this->markTestIncomplete('Fix offsets in FreeElephants\AltEra\DateInstantiator\DateInstantiator');
+        $formatter = new Formatter();
+        $date = $this->buildDate('0033', 1, 1);
+        $format = 'd, j';
+        $this->assertEquals('01, 1', $formatter->format($date, $format));
+    }
+
+    /**
+     *
+     * D	A textual representation of a day, three letters	Mon through Sun
+     * l (lowercase 'L')	A full textual representation of the day of the week	Sunday through Saturday
+     * N	ISO-8601 numeric representation of the day of the week (added in PHP 5.1.0)	1 (for Monday) through 7 (for Sunday)
+     * w	Numeric representation of the day of the week	0 (for Sunday) through 6 (for Saturday)
+     *
+     * not supported now :
+     * S	English ordinal suffix for the day of the month, 2 characters	st, nd, rd or th. Works well with j
+     */
+    public function testFormatDayOfWeek()
+    {
+        $this->markTestIncomplete('Require Week time unit feature. ');
+        $formatter = new Formatter();
+        $date = $this->buildDate('0033', 1, 1);
+        $format = 'D, l, N, w';
+        $this->assertEquals('Cуб, Суббота, 6, 6', $formatter->format($date, $format));
+    }
+
     private function buildDate($year = 1913, $month = 1, $day = 1)
     {
         /* @var \DateTime $date */
