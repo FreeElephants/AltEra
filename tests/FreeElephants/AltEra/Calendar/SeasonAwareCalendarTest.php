@@ -7,13 +7,10 @@ use FreeElephants\AltEra\TimeUnit\SeasonInterface;
 use FreeElephants\AltEra\Exception\ArgumentException;
 
 /**
- *
  * @author samizdam
- *
  */
 class SeasonAwareCalendarTest extends AbstractCalendarUnitTestCase
 {
-
     public function testGetSeasons()
     {
         $calendar = new SeasonAwareCalendar();
@@ -30,6 +27,5 @@ class SeasonAwareCalendarTest extends AbstractCalendarUnitTestCase
         $calendar->addSeason($season);
         $this->setExpectedException(ArgumentException::class);
         $calendar->addSeason($season);
-
     }
 }

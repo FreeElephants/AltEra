@@ -6,13 +6,10 @@ use FreeElephants\AltEra\AbstractCalendarUnitTestCase;
 use FreeElephants\AltEra\Calendar\CalendarInterface;
 
 /**
- *
  * @author samizdam
- *
  */
 class DateTest extends AbstractCalendarUnitTestCase
 {
-
     public function testGetDayOfMonth()
     {
         $calendar = $this->getMock(CalendarInterface::class);
@@ -46,5 +43,4 @@ class DateTest extends AbstractCalendarUnitTestCase
         $date = new Date($calendar, 1913, $month, 1);
         $this->assertEquals('1913, December 1', $date->format('Y, F j'));
     }
-
 }

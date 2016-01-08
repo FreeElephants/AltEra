@@ -3,21 +3,15 @@
 namespace FreeElephants\AltEra\Formatter;
 
 use FreeElephants\AltEra\AbstractCalendarUnitTestCase;
-use FreeElephants\AltEra\TimeUnit\DateInterface;
-use FreeElephants\AltEra\TimeUnit\MonthInterface;
-use FreeElephants\AltEra\Calendar\CalendarInterface;
 use FreeElephants\AltEra\DateInstantiator\DateInstantiator;
 use FreeElephants\AltEra\CalendarFactory;
 use FreeElephants\AltEra\Calendar\CalendarMutableInterface;
 
 /**
- *
  * @author samizdam
- *
  */
 class FormatterTest extends AbstractCalendarUnitTestCase
 {
-
     private $calendar;
 
     private $dateInstantiator;
@@ -36,7 +30,7 @@ class FormatterTest extends AbstractCalendarUnitTestCase
     }
 
     /**
-     * Year 	--- 	---
+     * Year 	--- 	---.
      *
      * Y 	A full numeric representation of a year, 4 digits 	Examples: 1999 or 2003
      * y 	A two digit representation of a year 	Examples: 99 or 03
@@ -44,7 +38,6 @@ class FormatterTest extends AbstractCalendarUnitTestCase
      * not supported now :
      * L 	Whether it's a leap year 	1 if it is a leap year, 0 otherwise.
      * o 	ISO-8601 year number. This has the same value as Y, except that if the ISO week number (W) belongs to the previous or next year, that year is used instead. (added in PHP 5.1.0) 	Examples: 1999 or 2003
-     *
      */
     public function testFormatYear()
     {
@@ -59,8 +52,7 @@ class FormatterTest extends AbstractCalendarUnitTestCase
      * m 	Numeric representation of a month, with leading zeros 	01 through 12
      * M 	A short textual representation of a month, three letters 	Jan through Dec
      * n 	Numeric representation of a month, without leading zeros 	1 through 12
-     * t 	Number of days in the given month 	28 through 31
-     *
+     * t 	Number of days in the given month 	28 through 31.
      */
     public function testFormatMonth()
     {
@@ -70,12 +62,12 @@ class FormatterTest extends AbstractCalendarUnitTestCase
         $this->assertEquals('Январь, 01, Янв, 1, 31', $formatter->format($date, $format));
     }
 
-
     private function buildDate($year = 1913, $month = 1, $day = 1)
     {
         /* @var \DateTime $date */
         $date = date_create_from_format('Y-n-j', "{$year}-{$month}-{$day}");
         $timestamp = $date->getTimestamp();
+
         return $this->dateInstantiator->buildDate($this->calendar, $timestamp);
     }
 }
