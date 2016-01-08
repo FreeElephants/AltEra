@@ -42,6 +42,7 @@ class DateTest extends AbstractCalendarUnitTestCase
         $calendar = $this->getMock(CalendarInterface::class);
         $month = $this->getMock(MonthInterface::class);
         $month->method('getName')->willReturn('December');
+        $calendar->method('getMonths')->willReturn([$month]);
         $date = new Date($calendar, 1913, $month, 1);
         $this->assertEquals('1913, December 1', $date->format('Y, F j'));
     }

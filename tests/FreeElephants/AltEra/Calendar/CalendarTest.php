@@ -18,6 +18,10 @@ class CalendarTest extends AbstractCalendarUnitTestCase
     public function testGetCurrentDate()
     {
         $calendar = new Calendar();
+        // make calendar not empty - prevent division by zero
+        $month = $this->getMock(MonthInterface::class);
+        $month->method('getNumberOfDays')->willReturn(31);
+        $calendar->addMonth($month);
         $this->assertInstanceOf(DateInterface::class, $calendar->getCurrentDate());
     }
 

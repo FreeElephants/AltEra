@@ -3,22 +3,20 @@
 namespace FreeElephants\AltEra\TimeUnit;
 
 use FreeElephants\AltEra\Calendar\CalendarInterface;
+
 /**
- * Value object for Date of Calendar
+ * Value object for Date of Calendar.
  *
  * @author samizdam
- *
  */
 interface DateInterface
 {
-
     /**
      * Get Date Year.
      *
      * @return int
      */
     public function getYear();
-
 
     /**
      * Get Date Month.
@@ -35,16 +33,13 @@ interface DateInterface
     public function getDayOfMonth();
 
     /**
-     *
-     *
      * @param string $format
+     *
      * @return string
      */
     public function format($format);
 
     /**
-     *
-     *
      * @return CalendarInterface
      */
     public function getCalendar();

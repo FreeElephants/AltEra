@@ -6,8 +6,8 @@ namespace FreeElephants\AltEra\Formatter;
  * TODO extract this enum from project?
  *
  * @author samizdam
- * @link https://php.net/date
  *
+ * @link https://php.net/date
  */
 interface DateFormatTokenEnum
 {
@@ -16,60 +16,68 @@ interface DateFormatTokenEnum
      */
 
     /**
-     * Day of the month, 2 digits with leading zeros
+     * Day of the month, 2 digits with leading zeros.
+     *
      * @example 01 to 31
      */
     const TOKEN_DAY_OF_MONTH_ZERO = 'd';
 
     /**
-     * A textual representation of a day, three letters
+     * A textual representation of a day, three letters.
+     *
      * @example Mon through Sun
      */
     const TOKEN_DAY_TEXTUAL = 'D';
 
     /**
-     * Day of the month without leading zeros
+     * Day of the month without leading zeros.
+     *
      * @example 1 to 31
      */
     const TOKEN_DAY_OF_MONTH = 'j';
 
     /**
-     * A full textual representation of the day of the week
+     * A full textual representation of the day of the week.
+     *
      * @example Sunday through Saturday
      */
     const TOKEN_DAY_OF_WEEK_TEXTUAL = 'l';
 
     /**
-     * ISO-8601 numeric representation of the day of the week
+     * ISO-8601 numeric representation of the day of the week.
+     *
      * @example 1 (for Monday) through 7 (for Sunday)
      */
     const TOKEN_DAY_OF_WEEK_NUMERIC_ISO_8601 = 'N';
 
     /**
-     * English ordinal suffix for the day of the month, 2 characters
+     * English ordinal suffix for the day of the month, 2 characters.
+     *
      * @example st, nd, rd or th. Works well with j
      */
     const TOKEN_DAY_OF_MONTH_SUFFIX_EN = 'S';
 
     /**
-     * Numeric representation of the day of the week
+     * Numeric representation of the day of the week.
+     *
      * @example 0 (for Sunday) through 6 (for Saturday)
      */
     const TOKEN_DAY_OF_WEEK_NUMERIC = 'w';
 
     /**
-     * The day of the year (starting from 0)
+     * The day of the year (starting from 0).
+     *
      * @var 0 through 365
      */
     const TOKEN_DAY_OF_YEAR = 'z';
-
 
     /*
      * Week representation
      */
 
     /**
-     * ISO-8601 week number of year, weeks starting on Monday (added in PHP 4.1.0)
+     * ISO-8601 week number of year, weeks starting on Monday (added in PHP 4.1.0).
+     *
      * @example 42 (the 42nd week in the year)
      */
     const TOKEN_WEEK_OF_YEAR_ISO_8601 = 'W';
@@ -79,31 +87,36 @@ interface DateFormatTokenEnum
      */
 
     /**
-     * A full textual representation of a month
+     * A full textual representation of a month.
+     *
      * @example January through December
      */
     const TOKEN_MONTH_TEXTUAL_FULL = 'F';
 
     /**
-     * Numeric representation of a month, with leading zeros
+     * Numeric representation of a month, with leading zeros.
+     *
      * @example 01 through 12
      */
     const TOKEN_MONTH_NUMERIC_ZERO = 'm';
 
     /**
-     * A short textual representation of a month, three letters
+     * A short textual representation of a month, three letters.
+     *
      * @example Jan through Dec
      */
     const TOKEN_MONTH_TEXTUAL_SHORT = 'M';
 
     /**
-     * Numeric representation of a month, without leading zeros
+     * Numeric representation of a month, without leading zeros.
+     *
      * @example 1 through 12
      */
     const TOKEN_MONTH_NUMERIC = 'n';
 
     /**
-     * Number of days in the given month
+     * Number of days in the given month.
+     *
      * @example 28 through 31
      */
     const TOKEN_NUMBER_OF_DAYS = 't';
@@ -113,7 +126,8 @@ interface DateFormatTokenEnum
      */
 
     /**
-     * Whether it's a leap year
+     * Whether it's a leap year.
+     *
      * @example 1 if it is a leap year, 0 otherwise
      */
     const TOKEN_YEAR_IS_LEAP = 'L';
@@ -121,18 +135,21 @@ interface DateFormatTokenEnum
     /**
      * ISO-8601 year number.
      * This has the same value as Y, except that if the ISO week number (W) belongs to the previous or next year, that year is used instead.
+     *
      * @example Examples: 1999 or 2003
      */
     const TOKEN_YEAR_NUMERIC_ISO_8601 = 'o';
 
     /**
-     * A full numeric representation of a year
+     * A full numeric representation of a year.
+     *
      * @example Examples: 1999 or 2003
      */
     const TOKEN_YEAR_NUMERIC_FULL = 'Y';
 
     /**
-     * A two digit representation of a year
+     * A two digit representation of a year.
+     *
      * @example Examples: 99 or 03
      */
     const TOKEN_YEAR_NUMERIC_SHORT = 'y';
@@ -159,5 +176,4 @@ interface DateFormatTokenEnum
 // c 	ISO 8601 date (added in PHP 5) 	2004-02-12T15:19:21+00:00
 // r 	» RFC 2822 formatted date 	Example: Thu, 21 Dec 2000 16:01:07 +0200
 // U 	Seconds since the Unix Epoch (January 1 1970 00:00:00 GMT) 	See also time()
-
 }

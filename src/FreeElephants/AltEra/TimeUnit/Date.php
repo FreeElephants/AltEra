@@ -5,49 +5,42 @@ namespace FreeElephants\AltEra\TimeUnit;
 use FreeElephants\AltEra\Formatter\FormatterInterface;
 use FreeElephants\AltEra\Calendar\CalendarInterface;
 use FreeElephants\AltEra\Formatter\Formatter;
+
 /**
- *
  * @author samizdam
- *
  */
 class Date implements DateInterface
 {
-
     /**
-     *
      * @var int
      */
     private $year;
 
     /**
-     *
      * @var MonthInterface
      */
     private $month;
 
     /**
-     *
      * @var int
      */
     private $day;
 
     /**
-     *
      * @var CalendarInterface
      */
     private $calendar;
 
     /**
-     *
      * @var FormatterInterface
      */
     private $formatter;
 
     /**
-     *
-     * @param int $year
-     * @param MonthInterface $month
-     * @param int $dayOfMonth
+     * @param CalendarInterface $calendar
+     * @param int               $year
+     * @param MonthInterface    $month
+     * @param int               $dayOfMonth
      */
     public function __construct(CalendarInterface $calendar, $year, MonthInterface $month, $dayOfMonth)
     {

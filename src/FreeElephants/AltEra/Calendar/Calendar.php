@@ -9,46 +9,36 @@ use FreeElephants\AltEra\DateInstantiator\DateInstantiator;
 use FreeElephants\AltEra\DateInstantiator\DateInstantiatorInterface;
 
 /**
- *
  * @author samizdam
- *
  */
 class Calendar implements CalendarMutableInterface
 {
-
     /**
-     *
      * @var int
      */
     private $initialTimestamp;
 
     /**
-     *
      * @var int
      */
     private $scale = self::DEFAULT_SCALE;
 
     /**
-     *
      * @var array
      */
     private $monthsMap = [];
 
     /**
-     *
      * @var DateInstantiatorInterface
      */
     private $dateInstatiator;
 
     /**
-     *
      * @var string
      */
     private $name;
 
     /**
-     *
-     *
      * @param int $timestamp
      */
     public function __construct($timestamp = null)
@@ -80,19 +70,15 @@ class Calendar implements CalendarMutableInterface
     public function addMonth(MonthInterface $month)
     {
         $monthName = $month->getName();
-        if(array_key_exists($monthName, $this->monthsMap)){
+        if (array_key_exists($monthName, $this->monthsMap)) {
             throw new ArgumentException("Month '{$monthName}' already exists in this calendar. ");
         } else {
             $this->monthsMap[$monthName] = $month;
         }
-
     }
 
     /**
-     *
-     *
      * @param int $timestamp
-     * @return void
      */
     public function setInitialTimestamp($timestamp)
     {
@@ -105,8 +91,6 @@ class Calendar implements CalendarMutableInterface
     }
 
     /**
-     *
-     *
      * @return DateInterface
      */
     public function getCurrentDate()
@@ -115,32 +99,25 @@ class Calendar implements CalendarMutableInterface
     }
 
     /**
-     *
-     *
      * @return int
      */
     public function getElapsedDays()
     {
-
     }
 
     /**
+     * (non-PHPdoc).
      *
-     * (non-PHPdoc)
      * @see \FreeElephants\AltEra\CalendarInterface::getElapsedYears()
-     *
      */
     public function getElapsedYears()
     {
-
     }
 
-
     /**
+     * (non-PHPdoc).
      *
-     * (non-PHPdoc)
      * @see \FreeElephants\AltEra\CalendarInterface::getMoths()
-     *
      */
     public function getMonths()
     {
@@ -149,11 +126,10 @@ class Calendar implements CalendarMutableInterface
 
     public function getNumberOfDaysInYear()
     {
-        $daysByMonths = array_map(function(MonthInterface $month){
+        $daysByMonths = array_map(function (MonthInterface $month) {
             return $month->getNumberOfDays();
         }, $this->getMonths());
 
         return array_sum($daysByMonths);
     }
-
 }
