@@ -3,21 +3,17 @@
 namespace FreeElephants\AltEra\TimeUnit;
 
 /**
- *
  * @author samizdam
- *
  */
 class Month implements MonthInterface
 {
-
     private $name;
 
     private $numberOfDays;
 
     /**
-     *
      * @param string $name
-     * @param int $numberOfDays
+     * @param int    $numberOfDays
      */
     public function __construct($name, $numberOfDays)
     {

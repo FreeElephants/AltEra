@@ -8,16 +8,17 @@ use FreeElephants\AltEra\Exception\ArgumentException;
 use FreeElephants\AltEra\AbstractCalendarUnitTestCase;
 
 /**
- *
  * @author samizdam
- *
  */
 class CalendarTest extends AbstractCalendarUnitTestCase
 {
-
     public function testGetCurrentDate()
     {
         $calendar = new Calendar();
+        // make calendar not empty - prevent division by zero
+        $month = $this->getMock(MonthInterface::class);
+        $month->method('getNumberOfDays')->willReturn(31);
+        $calendar->addMonth($month);
         $this->assertInstanceOf(DateInterface::class, $calendar->getCurrentDate());
     }
 
@@ -53,7 +54,7 @@ class CalendarTest extends AbstractCalendarUnitTestCase
     {
         $calendar = new Calendar();
         $month = $this->getMock(MonthInterface::class);
-        $month->method("getNumberOfDays")->willReturn(256);
+        $month->method('getNumberOfDays')->willReturn(256);
         $calendar->addMonth($month);
         $this->assertEquals(256, $calendar->getNumberOfDaysInYear());
     }
@@ -61,7 +62,7 @@ class CalendarTest extends AbstractCalendarUnitTestCase
     public function testGetName()
     {
         $calendar = new Calendar();
-        $calendar->setName("foo");
-        $this->assertEquals("foo", $calendar->getName());
+        $calendar->setName('foo');
+        $this->assertEquals('foo', $calendar->getName());
     }
 }
