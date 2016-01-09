@@ -33,8 +33,8 @@ class FormatterTest extends AbstractCalendarUnitTestCase
     {
         $formatter = new Formatter();
         $date = $this->buildDate(1970);
-        $format = '\Y, \y, \\\Y, \\\\\YY, \\\\';
-        $expected = 'Y, y, \1970, \Y1970, \\';
+        $format = '(0123\4)-\Y, \y, \\\Y, \\\\\YY, \\\\';
+        $expected = '(0123\4)-Y, y, \1970, \Y1970, \\';
         $this->assertEquals($expected, $formatter->format($date, $format));
         $this->assertEquals($expected, date($format, 0));
     }
