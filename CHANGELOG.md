@@ -3,7 +3,10 @@
 ## 0.11.0 - 2016-01-09
 ### Added
 - Formatter: format Date with characters Y, y, F, m, M, n, t. 
-- `firstMonth` option for season based calendar configs. 
+- `firstMonth` option for season based calendar configs.
+
+### Changed
+- Rename CalendarExceptionInterface to AltEraExceptionInterface.   
 
 ## 0.10.0 - 2016-01-01
 ### Changed

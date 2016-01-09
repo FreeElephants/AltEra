@@ -27,16 +27,16 @@ class Formatter implements FormatterInterface
             }
             $currentToken = $format[$i];
 
-            if ($currentToken === '\\'){
-                if(in_array($nextToken, $tokens, true)) {
+            if ($currentToken === '\\') {
+                if (in_array($nextToken, $tokens, true)) {
                     // escaped token
                     $resultString .= $nextToken;
                     ++$i;
                     continue;
-                } elseif($nextToken === '\\') {
+                } elseif ($nextToken === '\\') {
                     // backslash
                     $resultString .= '\\';
-                    $i++;
+                    ++$i;
                     continue;
                 }
             } elseif (in_array($currentToken, $tokens)) {
@@ -117,7 +117,7 @@ class Formatter implements FormatterInterface
 
             self::TOKEN_DAY_OF_MONTH_ZERO => function (DateInterface $date) {
                 return str_pad($date->getDayOfMonth(), 2, '0', STR_PAD_LEFT);
-            }
+            },
         ];
     }
 }
