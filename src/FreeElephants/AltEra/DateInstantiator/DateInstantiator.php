@@ -16,6 +16,7 @@ class DateInstantiator implements DateInstantiatorInterface
         $dayOfYear = $this->getDayOfYear($calendar, $timestamp);
         $month = $this->getMonthByDayOfYear($calendar, $dayOfYear);
         $day = $this->getDayOfMonth($calendar, $dayOfYear);
+
         return new Date($calendar, $year, $month, $day);
     }
 

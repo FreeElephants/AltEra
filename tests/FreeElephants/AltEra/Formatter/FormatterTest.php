@@ -38,7 +38,6 @@ class FormatterTest extends AbstractCalendarUnitTestCase
         $this->assertEquals($nativeResult, $formatter->format($date, $format));
     }
 
-
     /**
      * Year 	--- 	---.
      *
@@ -53,7 +52,8 @@ class FormatterTest extends AbstractCalendarUnitTestCase
     {
         $formatter = new Formatter();
         $date = $this->buildDate();
-        $this->assertEquals('1913, 13', $formatter->format($date, 'Y, y'));
+        $format = 'Y, y';
+        $this->assertEquals('1913, 13', $formatter->format($date, $format));
     }
 
     /**
@@ -73,10 +73,9 @@ class FormatterTest extends AbstractCalendarUnitTestCase
     }
 
     /**
-     *
      * Day	---	---
      * d	Day of the month, 2 digits with leading zeros	01 to 31
-     * j	Day of the month without leading zeros	1 to 31
+     * j	Day of the month without leading zeros	1 to 31.
      */
     public function testFormatDayOfMonth()
     {
@@ -88,11 +87,10 @@ class FormatterTest extends AbstractCalendarUnitTestCase
     }
 
     /**
-     *
      * D	A textual representation of a day, three letters	Mon through Sun
      * l (lowercase 'L')	A full textual representation of the day of the week	Sunday through Saturday
      * N	ISO-8601 numeric representation of the day of the week (added in PHP 5.1.0)	1 (for Monday) through 7 (for Sunday)
-     * w	Numeric representation of the day of the week	0 (for Sunday) through 6 (for Saturday)
+     * w	Numeric representation of the day of the week	0 (for Sunday) through 6 (for Saturday).
      *
      * not supported now :
      * S	English ordinal suffix for the day of the month, 2 characters	st, nd, rd or th. Works well with j
