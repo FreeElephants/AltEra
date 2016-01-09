@@ -9,32 +9,26 @@ use FreeElephants\AltEra\TimeUnit\MonthInterface;
  * Facade: main public interface of AltEra package.
  *
  * @author samizdam
- *
- * @package FreeElephants\AltEra
  */
 interface CalendarInterface
 {
-
     const SEC_PER_DAY = 60 * 60 * 24;
 
     const DEFAULT_SCALE = self::SEC_PER_DAY;
 
     /**
-     * Name of this Calendar
+     * Name of this Calendar.
      *
      * @return string
      */
     public function getName();
 
     /**
-     *
-     *
      * @return int
      */
     public function getInitialTimestamp();
 
     /**
-     *
      * @return number
      */
     public function getScale();
@@ -68,10 +62,7 @@ interface CalendarInterface
     public function getMonths();
 
     /**
-     *
-     *
      * @return int
      */
     public function getNumberOfDaysInYear();
-
 }
