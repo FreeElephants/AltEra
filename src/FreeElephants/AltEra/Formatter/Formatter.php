@@ -27,10 +27,18 @@ class Formatter implements FormatterInterface
             }
             $currentToken = $format[$i];
 
-            if ($currentToken === '\\' && in_array($nextToken, $tokens, true)) {
-                $resultString .= $nextToken;
-                ++$i;
-                continue;
+            if ($currentToken === '\\'){
+                if(in_array($nextToken, $tokens, true)) {
+                    // escaped token
+                    $resultString .= $nextToken;
+                    ++$i;
+                    continue;
+                } elseif($nextToken === '\\') {
+                    // backslash
+                    $resultString .= '\\';
+                    $i++;
+                    continue;
+                }
             } elseif (in_array($currentToken, $tokens)) {
                 $resultString .= $this->getTokenValue($currentToken, $date);
                 continue;

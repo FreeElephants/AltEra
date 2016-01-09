@@ -22,12 +22,23 @@ class FormatterTest extends AbstractCalendarUnitTestCase
         $config = $this->loadPhpFixture('gregorian-season-based-ru.php');
         $calendar = $factory->createFromArray($config);
         /* @var CalendarMutableInterface $calendar */
-        $initialTimestamp = date_create_from_format('Y-m-d', '0001-01-01')->getTimestamp();
+        $initialTimestamp = \DateTime::createFromFormat('Y-m-d', '0001-01-01', new \DateTimeZone('UTC'))->getTimestamp();
         $calendar->setInitialTimestamp($initialTimestamp);
         $this->calendar = $calendar;
         $this->dateInstantiator = new DateInstantiator();
         parent::setUp();
     }
+
+    public function testEscapingBehaviorEqualsNativeDate()
+    {
+        $formatter = new Formatter();
+        $date = $this->buildDate(1970);
+        $format = '\Y, \y, \\\Y, \\\\\YY, \\\\';
+        $expected = 'Y, y, \1970, \Y1970, \\';
+        $this->assertEquals($expected, $formatter->format($date, $format));
+        $this->assertEquals($expected, date($format, 0));
+    }
+
 
     /**
      * Year 	--- 	---.
@@ -98,8 +109,10 @@ class FormatterTest extends AbstractCalendarUnitTestCase
 
     private function buildDate($year = 1913, $month = 1, $day = 1)
     {
+        $format = 'Y-n-j';
+        $dateString = "{$year}-{$month}-{$day}";
         /* @var \DateTime $date */
-        $date = date_create_from_format('Y-n-j', "{$year}-{$month}-{$day}");
+        $date = \DateTime::createFromFormat($format, $dateString, new \DateTimeZone('UTC'));
         $timestamp = $date->getTimestamp();
 
         return $this->dateInstantiator->buildDate($this->calendar, $timestamp);
