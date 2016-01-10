@@ -4,6 +4,9 @@
 ### Added
 - Leap Year Feature and related methods in Calendar and builders interfaces. 
 
+### Changed 
+- Calendar::getNumberOfDaysInYear takes an argumenr $year now (for Leap Years supporting). 
+
 ## 0.11.1 - 2016-01-10
 ### Added
 - Configuration container and new method in CalendarFactory::createFromObject(). 
