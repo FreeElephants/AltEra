@@ -18,22 +18,24 @@ use FreeElephants\AltEra\Configuration\ConfigurationInterface;
  */
 class CalendarFactory implements CalendarFactoryInterface, ConfigurationFieldEnum
 {
-
     public function createFromJson($jsonString)
     {
         $config = Configuration::createFromString(FormatEnum::FORMAT_JSON, $jsonString);
+
         return $this->createFromObject($config);
     }
 
     public function createFromYaml($yamlString)
     {
         $config = Configuration::createFromString(FormatEnum::FORMAT_YAML, $yamlString);
+
         return $this->createFromObject($config);
     }
 
     public function createFromArray(array $array)
     {
         $config = new Configuration($array);
+
         return $this->createFromObject($config);
     }
 

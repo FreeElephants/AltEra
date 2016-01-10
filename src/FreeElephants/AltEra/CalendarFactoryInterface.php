@@ -3,6 +3,7 @@
 namespace FreeElephants\AltEra;
 
 use FreeElephants\AltEra\Calendar\CalendarInterface;
+use FreeElephants\AltEra\Configuration\ConfigurationInterface;
 
 /**
  * @author samizdam
@@ -10,6 +11,8 @@ use FreeElephants\AltEra\Calendar\CalendarInterface;
 interface CalendarFactoryInterface
 {
     /**
+     * Create Calendar instance from Yaml serialized string.
+     *
      * @param string $yamlString
      *
      * @return CalendarInterface
@@ -17,6 +20,8 @@ interface CalendarFactoryInterface
     public function createFromYaml($yamlString);
 
     /**
+     * Create Calendar instance from PHP array config.
+     *
      * @param array $config
      *
      * @return CalendarInterface
@@ -24,9 +29,20 @@ interface CalendarFactoryInterface
     public function createFromArray(array $config);
 
     /**
+     * Create Calendar instance from Json serialized string.
+     *
      * @param string $jsonString
      *
      * @return CalendarInterface
      */
     public function createFromJson($jsonString);
+
+    /**
+     * Create Calendar instance from Configuration object.
+     *
+     * @param ConfigurationInterface $config
+     *
+     * @return CalendarInterface
+     */
+    public function createFromObject(ConfigurationInterface $config);
 }

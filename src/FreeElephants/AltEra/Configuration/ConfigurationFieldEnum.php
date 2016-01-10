@@ -14,6 +14,7 @@ interface ConfigurationFieldEnum
      *
      * @required for season based
      * @value array
+     *
      * @var string
      */
     const FIELD_SEASONS = 'seasons';
@@ -28,6 +29,7 @@ interface ConfigurationFieldEnum
      *
      * @required
      * @value array
+     *
      * @var string
      */
     const FIELD_MONTHS = 'months';
@@ -39,12 +41,12 @@ interface ConfigurationFieldEnum
      *
      * @optional
      * @value string
+     *
      * @var string
      */
     const FIELD_CALENDAR_NAME = 'name';
 
     /**
-     *
      * Used with season based configuration.
      * Must be equals with name of some existed month, provided with `season`.
      *
@@ -52,6 +54,7 @@ interface ConfigurationFieldEnum
      *
      * @optional
      * @value string
+     *
      * @var string
      */
     const FIELD_FIRST_MONTH_NAME = 'firstMonth';
@@ -64,17 +67,20 @@ interface ConfigurationFieldEnum
      *
      * @optional
      * @value int
+     *
      * @var string
      */
     const FIELD_SCALE = 'scale';
 
     /**
      * Features of calendar: leapYears or weeks.
+     *
      * @see FIELD_LEAP_YEARS and FIELD_WEEKS.
      * Top level.
      *
      * @optional
      * @value array
+     *
      * @var string
      */
     const FIELD_FEATURES = 'features';
@@ -86,8 +92,8 @@ interface ConfigurationFieldEnum
      *
      * @optional
      * @value array
+     *
      * @var string
      */
     const FIELD_LEAP = 'leapYears';
-
 }

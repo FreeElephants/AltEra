@@ -1,5 +1,11 @@
 # AltEra Changelog
 
+## 0.11.1 - 2016-01-10
+### Added
+- Configuration container and new method in CalendarFactory::createFromObject(). 
+- New contants in ConfigurationFieldEnum for new features. 
+- Phpmetrics configuration. 
+
 ## 0.11.0 - 2016-01-09
 ### Added
 - Formatter: format Date with characters Y, y, F, m, M, n, t. 
