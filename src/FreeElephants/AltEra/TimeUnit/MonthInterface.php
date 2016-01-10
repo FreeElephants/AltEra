@@ -3,7 +3,7 @@
 namespace FreeElephants\AltEra\TimeUnit;
 
 /**
- * Value object for Mothr of Calendar.
+ * Value object for Month of Calendar.
  *
  * @author samizdam
  */

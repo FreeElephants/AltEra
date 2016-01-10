@@ -1,5 +1,9 @@
 # AltEra Changelog
 
+## 0.12.0 - 2016-01-10
+### Added
+- Leap Year Feature and related methods in Calendar and builders interfaces. 
+
 ## 0.11.1 - 2016-01-10
 ### Added
 - Configuration container and new method in CalendarFactory::createFromObject(). 

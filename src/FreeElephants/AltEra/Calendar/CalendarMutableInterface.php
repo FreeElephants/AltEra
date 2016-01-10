@@ -3,6 +3,7 @@
 namespace FreeElephants\AltEra\Calendar;
 
 use FreeElephants\AltEra\TimeUnit\MonthInterface;
+use FreeElephants\AltEra\Feature\LeapYear\LeapYearFeatureInterface;
 
 /**
  * @author samizdam
@@ -22,6 +23,13 @@ interface CalendarMutableInterface extends CalendarInterface
      * @param MonthInterface $month
      */
     public function addMonth(MonthInterface $month);
+
+    /**
+     * Add and enable leap years feature for this calendar.
+     *
+     * @param LeapYearFeatureInterface $feature
+     */
+    public function addLeapYearFeature(LeapYearFeatureInterface $feature);
 
     /**
      * Set timestamp for 1 day of first calender year.

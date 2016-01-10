@@ -6,6 +6,7 @@ use FreeElephants\AltEra\Exception\ArgumentException;
 use FreeElephants\AltEra\TimeUnit\MonthInterface;
 use FreeElephants\AltEra\DateInstantiator\DateInstantiator;
 use FreeElephants\AltEra\DateInstantiator\DateInstantiatorInterface;
+use FreeElephants\AltEra\Feature\LeapYear\LeapYearFeatureInterface;
 
 /**
  * @author samizdam
@@ -36,6 +37,11 @@ class Calendar implements CalendarMutableInterface
      * @var string
      */
     private $name;
+
+    /**
+     * @var array
+     */
+    private $leapYearFeaturesMap = [];
 
     /**
      * @param int $initialTimestamp
@@ -76,6 +82,21 @@ class Calendar implements CalendarMutableInterface
         }
     }
 
+    public function addLeapYearFeature(LeapYearFeatureInterface $feature)
+    {
+        $this->leapYearFeaturesMap[$feature->getName()] = $feature;
+    }
+
+    public function getLeapYearFeatures()
+    {
+        return $this->leapYearFeaturesMap;
+    }
+
+    public function hasLeapYearFeature()
+    {
+        return count($this->leapYearFeaturesMap) > 0;
+    }
+
     public function setInitialTimestamp($timestamp)
     {
         $this->initialTimestamp = (int) $timestamp;
@@ -91,37 +112,36 @@ class Calendar implements CalendarMutableInterface
         return $this->dateInstatiator->buildDate($this, time());
     }
 
-    /**
-     * @return int
-     */
     public function getElapsedDays()
     {
     }
 
-    /**
-     * (non-PHPdoc).
-     *
-     * @see \FreeElephants\AltEra\CalendarInterface::getElapsedYears()
-     */
     public function getElapsedYears()
     {
     }
 
-    /**
-     * (non-PHPdoc).
-     *
-     * @see \FreeElephants\AltEra\CalendarInterface::getMoths()
-     */
     public function getMonths()
     {
         return array_values($this->monthsMap);
     }
 
-    public function getNumberOfDaysInYear()
+    public function getNumberOfDaysInYear($year = null)
     {
+        if ($this->hasLeapYearFeature() && $year != null) {
+            $yearNumber = (int) $year;
+
+            /** @var LeapYearFeatureInterface $feature */
+            foreach ($this->getLeapYearFeatures() as $featureName => $feature) {
+                if ($feature->getDetector()->isLeapYear($yearNumber)) {
+                    $months = $feature->getMonths();
+                }
+            }
+        } else {
+            $months = $this->getMonths();
+        }
         $daysByMonths = array_map(function (MonthInterface $month) {
             return $month->getNumberOfDays();
-        }, $this->getMonths());
+        }, $months);
 
         return array_sum($daysByMonths);
     }
