@@ -5,7 +5,7 @@
 
 # PHPUnit
 phpunit.xml
-tests/_coverage
+reports/
 
 # composer
 vendor/

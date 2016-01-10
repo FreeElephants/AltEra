@@ -35,6 +35,24 @@ $calendar->getNumberOfDaysInYear(); // will return "33" - sum of days in all mon
 
 ```
 
+## Contributing
+
+### Preconfigured tools: 
+
+Phpunit for run tests with coverage reporting (uncomment coverage line in your phpunit.xml, copied from dist file): 
+
+```bash
+phpunit tests/
+```
+
+Phpmetrics - static analyzer tool. If it's installed globaly (see for details https://github.com/Halleck45/PhpMetrics/#installation ) you can run it as:  
+ 
+```bash
+phpmetrics --config=phpmetrics.yml src/
+```
+
+All reports locate in `/reports` dir, under gitignore. 
+
 ## Author
 
 samizdam <samizdam@inbox.ru>

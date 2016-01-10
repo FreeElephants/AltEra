@@ -39,11 +39,11 @@ class Calendar implements CalendarMutableInterface
     private $name;
 
     /**
-     * @param int $timestamp
+     * @param int $initialTimestamp
      */
-    public function __construct($timestamp = null)
+    public function __construct($initialTimestamp = null)
     {
-        $this->setInitialTimestamp($timestamp ?: time());
+        $this->setInitialTimestamp($initialTimestamp ?: time());
         $this->dateInstatiator = new DateInstantiator();
     }
 
@@ -77,9 +77,6 @@ class Calendar implements CalendarMutableInterface
         }
     }
 
-    /**
-     * @param int $timestamp
-     */
     public function setInitialTimestamp($timestamp)
     {
         $this->initialTimestamp = (int) $timestamp;
@@ -90,9 +87,6 @@ class Calendar implements CalendarMutableInterface
         return $this->initialTimestamp;
     }
 
-    /**
-     * @return DateInterface
-     */
     public function getCurrentDate()
     {
         return $this->dateInstatiator->buildDate($this, time());

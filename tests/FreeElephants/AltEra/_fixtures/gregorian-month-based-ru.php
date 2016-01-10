@@ -52,5 +52,15 @@ return [
             'numberOfDays' => 31,
         ],
     ],
-
+    'features' => [
+        'leapYears' => [
+            [
+                'detector' => '',
+                'months' => [
+                    'name' => 'Февраль',
+                    'numberOfDays' => 29,
+                ],
+            ],
+        ],
+    ],
 ];

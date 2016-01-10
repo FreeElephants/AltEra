@@ -1,0 +1,10 @@
+config:
+    # paths to explore
+    path:
+        extensions: php
+        exclude: config-example|tests|vendor
+
+    # report and violations files
+    logging:
+        report:
+            html: reports/phpmetrics.html

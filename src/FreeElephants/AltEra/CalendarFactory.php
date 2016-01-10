@@ -7,39 +7,41 @@ use FreeElephants\AltEra\Builder\MonthAwareCalendarBuilder;
 use FreeElephants\AltEra\Exception\InvalidConfigurationException;
 use FreeElephants\AltEra\Configuration\ConfigurationFieldEnum;
 use FreeElephants\AltEra\TimeUnit\Month;
-use FreeElephants\Configuration\Reader\ReaderFactory;
+use FreeElephants\AltEra\Configuration\Configuration;
+use FreeElephants\Configuration\FormatEnum;
+use FreeElephants\AltEra\Configuration\ConfigurationInterface;
 
 /**
+ * Create Calendar instance from configuration.
+ *
  * @author samizdam
  */
 class CalendarFactory implements CalendarFactoryInterface, ConfigurationFieldEnum
 {
-    private $configReaderFactory;
-
-    public function __construct()
-    {
-        $this->configReaderFactory = new ReaderFactory();
-    }
 
     public function createFromJson($jsonString)
     {
-        $config = $this->configReaderFactory->createReader(ReaderFactory::FORMAT_JSON)->readString($jsonString);
-
-        return $this->createFromArray($config);
+        $config = Configuration::createFromString(FormatEnum::FORMAT_JSON, $jsonString);
+        return $this->createFromObject($config);
     }
 
     public function createFromYaml($yamlString)
     {
-        $config = $this->configReaderFactory->createReader(ReaderFactory::FORMAT_YAML)->readString($yamlString);
-
-        return $this->createFromArray($config);
+        $config = Configuration::createFromString(FormatEnum::FORMAT_YAML, $yamlString);
+        return $this->createFromObject($config);
     }
 
-    public function createFromArray(array $config)
+    public function createFromArray(array $array)
     {
-        $calendarName = $this->isCalendarNameProvided($config) ? $config[self::FIELD_CALENDAR_NAME] : null;
+        $config = new Configuration($array);
+        return $this->createFromObject($config);
+    }
 
-        if ($this->isSeasonAwareConfig($config)) {
+    public function createFromObject(ConfigurationInterface $config)
+    {
+        $calendarName = $config->isCalendarNameProvided() ? $config[self::FIELD_CALENDAR_NAME] : null;
+
+        if ($config->isSeasonAwareConfig()) {
             $builder = new SeasonAwareCalendarBuilder($calendarName);
             $seasons = $config[self::FIELD_SEASONS];
             foreach ($seasons as $seasonData) {
@@ -50,11 +52,11 @@ class CalendarFactory implements CalendarFactoryInterface, ConfigurationFieldEnu
                 }
                 $builder->addSeason($name, $months);
             }
-            if (isset($config['firstMonth'])) {
-                $monthName = $config['firstMonth'];
+            if (isset($config[self::FIELD_FIRST_MONTH_NAME])) {
+                $monthName = $config[self::FIELD_FIRST_MONTH_NAME];
                 $builder->setFirstMonthByName($monthName);
             }
-        } elseif ($this->isMonthAwareConfig($config)) {
+        } elseif ($config->isMonthAwareConfig()) {
             $builder = new MonthAwareCalendarBuilder($calendarName);
             $months = $config[self::FIELD_MONTHS];
             foreach ($months as $name => $numberOfDays) {
@@ -65,20 +67,5 @@ class CalendarFactory implements CalendarFactoryInterface, ConfigurationFieldEnu
         }
 
         return $builder->buildCalandar();
-    }
-
-    private function isSeasonAwareConfig(array $config)
-    {
-        return array_key_exists(self::FIELD_SEASONS, $config);
-    }
-
-    private function isMonthAwareConfig(array $config)
-    {
-        return array_key_exists(self::FIELD_MONTHS, $config);
-    }
-
-    private function isCalendarNameProvided(array $config)
-    {
-        return array_key_exists(self::FIELD_CALENDAR_NAME, $config);
     }
 }

@@ -24,6 +24,8 @@ interface CalendarMutableInterface extends CalendarInterface
     public function addMonth(MonthInterface $month);
 
     /**
+     * Set timestamp for 1 day of first calender year.
+     *
      * @param int $timestamp
      */
     public function setInitialTimestamp($timestamp);
