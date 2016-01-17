@@ -72,7 +72,7 @@ class CalendarTest extends AbstractCalendarUnitTestCase
         $leapMonth = $this->getMock(MonthInterface::class);
         $leapMonth->method('getNumberOfDays')->willReturn(29);
         $feature->setMonths([$leapMonth]);
-        $calendar->addLeapYearFeature($feature);
+        $calendar->setLeapYearFeature($feature);
 
         $this->assertEquals(29, $calendar->getNumberOfDaysInYear(4));
     }

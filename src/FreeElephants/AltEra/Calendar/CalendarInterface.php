@@ -78,7 +78,7 @@ interface CalendarInterface
      *
      * @return LeapYearFeatureInterface[]
      */
-    public function getLeapYearFeatures();
+    public function getLeapYearFeature();
 
     /**
      * Check that this Calendar has Leap Year Feature.

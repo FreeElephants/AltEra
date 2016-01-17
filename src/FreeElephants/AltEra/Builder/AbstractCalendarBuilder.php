@@ -4,6 +4,7 @@ namespace FreeElephants\AltEra\Builder;
 
 use FreeElephants\AltEra\Calendar\CalendarMutableInterface;
 use FreeElephants\AltEra\Calendar\CalendarInterface;
+use FreeElephants\AltEra\Feature\LeapYear\BaseLeapYearFeature;
 
 /**
  * @author samizdam
@@ -20,9 +21,12 @@ abstract class AbstractCalendarBuilder implements CalendarBuilderInterface
      */
     private $calendar;
 
+    private $leapYearFeaturesMap;
+
     public function __construct()
     {
         $this->setInitialState();
+        $this->leapYearFeaturesMap = new \SplObjectStorage();
     }
 
     /**
@@ -35,6 +39,10 @@ abstract class AbstractCalendarBuilder implements CalendarBuilderInterface
     public function setCalendarName($name)
     {
         $this->getCalendar()->setName($name);
+    }
+
+    public function setLeapYearFeature($detectorClassName, array $monthData)
+    {
     }
 
     /**

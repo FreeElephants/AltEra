@@ -22,4 +22,13 @@ interface CalendarBuilderInterface
      * @return CalendarInterface
      */
     public function buildCalandar();
+
+    /**
+     * Add Leap Year Feature Data
+     *
+     * @param string $detectorClassName
+     * @param array $modifiedMonths
+     * @return self
+     */
+    public function setLeapYearFeature($detectorClassName, array $monthData);
 }

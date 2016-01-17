@@ -39,9 +39,9 @@ class Calendar implements CalendarMutableInterface
     private $name;
 
     /**
-     * @var array
+     * @var LeapYearFeatureInterface
      */
-    private $leapYearFeaturesMap = [];
+    private $leapYearFeature;
 
     /**
      * @param int $initialTimestamp
@@ -82,19 +82,19 @@ class Calendar implements CalendarMutableInterface
         }
     }
 
-    public function addLeapYearFeature(LeapYearFeatureInterface $feature)
+    public function setLeapYearFeature(LeapYearFeatureInterface $feature)
     {
-        $this->leapYearFeaturesMap[$feature->getName()] = $feature;
+        $this->leapYearFeature = $feature;
     }
 
-    public function getLeapYearFeatures()
+    public function getLeapYearFeature()
     {
-        return $this->leapYearFeaturesMap;
+        return $this->leapYearFeature;
     }
 
     public function hasLeapYearFeature()
     {
-        return count($this->leapYearFeaturesMap) > 0;
+        return $this->leapYearFeature !== null;
     }
 
     public function setInitialTimestamp($timestamp)
@@ -130,11 +130,9 @@ class Calendar implements CalendarMutableInterface
         if ($this->hasLeapYearFeature() && $year != null) {
             $yearNumber = (int) $year;
 
-            /** @var LeapYearFeatureInterface $feature */
-            foreach ($this->getLeapYearFeatures() as $featureName => $feature) {
-                if ($feature->getDetector()->isLeapYear($yearNumber)) {
-                    $months = $feature->getMonths();
-                }
+            $feature = $this->getLeapYearFeature();
+            if ($feature->getDetector()->isLeapYear($yearNumber)) {
+                $months = $feature->getMonths();
             }
         } else {
             $months = $this->getMonths();

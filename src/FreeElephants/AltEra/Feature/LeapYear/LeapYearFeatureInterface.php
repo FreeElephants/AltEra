@@ -12,13 +12,6 @@ interface LeapYearFeatureInterface
     const DEFAUL_LEAP_YEAR_FEATURE_NAME = 'leap';
 
     /**
-     * Name of this leap Feature.
-     *
-     * @return string
-     */
-    public function getName();
-
-    /**
      * @param LeapYearDetectorInterface $detector
      *
      * @return return_type

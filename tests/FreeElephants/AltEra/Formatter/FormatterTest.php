@@ -87,6 +87,8 @@ class FormatterTest extends AbstractCalendarUnitTestCase
     }
 
     /**
+     * Days and weeks
+     *
      * D	A textual representation of a day, three letters	Mon through Sun
      * l (lowercase 'L')	A full textual representation of the day of the week	Sunday through Saturday
      * N	ISO-8601 numeric representation of the day of the week (added in PHP 5.1.0)	1 (for Monday) through 7 (for Sunday)

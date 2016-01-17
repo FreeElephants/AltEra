@@ -29,7 +29,7 @@ interface CalendarMutableInterface extends CalendarInterface
      *
      * @param LeapYearFeatureInterface $feature
      */
-    public function addLeapYearFeature(LeapYearFeatureInterface $feature);
+    public function setLeapYearFeature(LeapYearFeatureInterface $feature);
 
     /**
      * Set timestamp for 1 day of first calender year.

@@ -9,19 +9,11 @@ class BaseLeapYearFeature implements LeapYearFeatureInterface
 {
     private $detector;
 
-    private $name;
-
     private $months = [];
 
-    public function __construct(LeapYearDetectorInterface $detector, $name = self::DEFAUL_LEAP_YEAR_FEATURE_NAME)
+    public function __construct(LeapYearDetectorInterface $detector)
     {
         $this->setDetector($detector);
-        $this->name = $name;
-    }
-
-    public function getName()
-    {
-        return $this->name;
     }
 
     public function getDetector()
