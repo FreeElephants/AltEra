@@ -21,4 +21,9 @@ interface ConfigurationInterface extends ConfigurationFieldEnum, \ArrayAccess
      * @return bool
      */
     public function isCalendarNameProvided();
+
+    /**
+     * @return bool
+     */
+    public function hasLeapFeature();
 }

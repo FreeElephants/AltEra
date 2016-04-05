@@ -63,11 +63,22 @@ class Configuration implements ConfigurationInterface
         return $this->offsetExists(self::FIELD_SEASONS);
     }
 
+    public function hasLeapFeature()
+    {
+        return $this->offsetExists(self::FIELD_FEATURES) && $this->offsetGet(self::FIELD_FEATURES)->offsetExists(self::FIELD_LEAP);
+    }
+
     public function offsetExists($fieldName)
     {
         return $this->container->offsetExists($fieldName);
     }
 
+    /**
+     *
+     * (non-PHPdoc)
+     * @see ArrayAccess::offsetGet()
+     * @return \ArrayAccess|string|number|null|bool
+     */
     public function offsetGet($fieldName)
     {
         return $this->container->offsetGet($fieldName);

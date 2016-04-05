@@ -45,7 +45,7 @@ class CalendarFactory implements CalendarFactoryInterface, ConfigurationFieldEnu
 
         if ($config->isSeasonAwareConfig()) {
             $builder = new SeasonAwareCalendarBuilder($calendarName);
-            $seasons = $config[self::FIELD_SEASONS];
+            $seasons = $config->offsetGet(self::FIELD_SEASONS);
             foreach ($seasons as $seasonData) {
                 $name = $seasonData['name'];
                 $months = [];
@@ -54,18 +54,28 @@ class CalendarFactory implements CalendarFactoryInterface, ConfigurationFieldEnu
                 }
                 $builder->addSeason($name, $months);
             }
-            if (isset($config[self::FIELD_FIRST_MONTH_NAME])) {
-                $monthName = $config[self::FIELD_FIRST_MONTH_NAME];
+            if ($config->offsetExists(self::FIELD_FIRST_MONTH_NAME)) {
+                $monthName = $config->offsetGet(self::FIELD_FIRST_MONTH_NAME);
                 $builder->setFirstMonthByName($monthName);
             }
         } elseif ($config->isMonthAwareConfig()) {
             $builder = new MonthAwareCalendarBuilder($calendarName);
-            $months = $config[self::FIELD_MONTHS];
+            $months = $config->offsetGet(self::FIELD_MONTHS);
             foreach ($months as $name => $numberOfDays) {
                 $builder->addMonth($name, $numberOfDays);
             }
         } else {
             throw new InvalidConfigurationException('Configuration must provide seasons or months units. ');
+        }
+
+        // features section
+        if($config->hasLeapFeature()){
+            /* @var \ArrayAccess $featuresConfig */
+            $featuresConfig = $config->offsetGet(self::FIELD_FEATURES);
+            $leapConfig = $featuresConfig->offsetGet(self::FIELD_LEAP);
+            $detectorClassName = $leapConfig->offsetGet('detector');
+            $monthsData = $leapConfig->offsetGet('months');
+            $builder->setLeapYearFeature($detectorClassName, $monthsData);
         }
 
         return $builder->buildCalandar();
