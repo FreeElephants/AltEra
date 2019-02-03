@@ -2,10 +2,12 @@
 
 namespace FreeElephants\AltEra;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @author samizdam
  */
-abstract class AbstractCalendarUnitTestCase extends \PHPUnit_Framework_TestCase
+abstract class AbstractCalendarUnitTestCase extends TestCase
 {
     const DS = DIRECTORY_SEPARATOR;
 

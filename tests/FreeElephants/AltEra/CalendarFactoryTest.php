@@ -35,7 +35,7 @@ class CalendarFactoryTest extends AbstractCalendarUnitTestCase
     public function testCreateFromArrayWithMissingRequiredField()
     {
         $factory = new CalendarFactory();
-        $this->setExpectedException(InvalidConfigurationException::class);
+        $this->expectException(InvalidConfigurationException::class);
         $factory->createFromArray([]);
     }
 }

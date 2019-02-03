@@ -1,11 +1,11 @@
 # IDE
-.settings/
-.project
-.buildpath
-
+/.settings/
+/.project
+/.buildpath
+/.idea/
 # PHPUnit
-phpunit.xml
-tests/_coverage
+/phpunit.xml
+/tests/_coverage
 
 # composer
-vendor/
+/vendor/

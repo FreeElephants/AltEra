@@ -14,7 +14,7 @@ class SeasonAwareCalendarTest extends AbstractCalendarUnitTestCase
     public function testGetSeasons()
     {
         $calendar = new SeasonAwareCalendar();
-        $season = $this->getMock(SeasonInterface::class);
+        $season = $this->createMock(SeasonInterface::class);
         $calendar->addSeason($season);
         $this->assertCount(1, $calendar->getSeasons());
     }
@@ -22,10 +22,10 @@ class SeasonAwareCalendarTest extends AbstractCalendarUnitTestCase
     public function testAddSeasonArgumentException()
     {
         $calendar = new SeasonAwareCalendar();
-        $season = $this->getMock(SeasonInterface::class);
+        $season = $this->createMock(SeasonInterface::class);
         $season->method('getName')->willReturn('spring');
         $calendar->addSeason($season);
-        $this->setExpectedException(ArgumentException::class);
+        $this->expectException(ArgumentException::class);
         $calendar->addSeason($season);
     }
 }

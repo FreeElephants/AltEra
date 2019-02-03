@@ -20,11 +20,11 @@ class SeasonAwareCalendarBuilderTest extends AbstractCalendarUnitTestCase
 
     public function testSetFirstMonthByName()
     {
-        $firstMonth = $this->getMock(MonthInterface::class);
+        $firstMonth = $this->createMock(MonthInterface::class);
         $firstMonth->method('getName')->willReturn('first');
-        $secondMonth = $this->getMock(MonthInterface::class);
+        $secondMonth = $this->createMock(MonthInterface::class);
         $secondMonth->method('getName')->willReturn('second');
-        $zeroMonth = $this->getMock(MonthInterface::class);
+        $zeroMonth = $this->createMock(MonthInterface::class);
         $zeroMonth->method('getName')->willReturn('zero');
         $months = [
             $firstMonth,
@@ -41,7 +41,7 @@ class SeasonAwareCalendarBuilderTest extends AbstractCalendarUnitTestCase
 
     public function testSetFirstMonthByNameWithInvalidValue()
     {
-        $firstMonth = $this->getMock(MonthInterface::class);
+        $firstMonth = $this->createMock(MonthInterface::class);
         $firstMonth->method('getName')->willReturn('first');
         $months = [
             $firstMonth,
@@ -49,7 +49,7 @@ class SeasonAwareCalendarBuilderTest extends AbstractCalendarUnitTestCase
         $builder = new SeasonAwareCalendarBuilder();
         $builder->addSeason('Foo', $months);
         $builder->setFirstMonthByName('zero');
-        $this->setExpectedException(InvalidConfigurationException::class);
+        $this->expectException(InvalidConfigurationException::class);
         $builder->buildCalandar();
     }
 }
