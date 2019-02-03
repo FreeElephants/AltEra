@@ -1,5 +1,7 @@
 # AltEra
 
+[![Build Status](https://travis-ci.org/FreeElephants/AltEra.svg?branch=master)](https://travis-ci.org/FreeElephants/AltEra)
+
 This Project implements https://github.com/MagicGreenHat/Kingdom/issues/38 , but can be useful in any php application, that need customizable Calendar (not traditional).  
 
 ## Features
